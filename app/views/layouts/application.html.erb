@@ -11,6 +11,60 @@
   </head>
 
   <body>
+    <header>
+      <nav class="navbar navbar-expand-lg navbar-light bg-light">
+      <a class= "navbar-brand" href="/">
+        <%= image_tag "" %>
+      </a>
+      <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse" id="navbarSupportedContent">
+        <ul class="navbar-nav ml-auto">
+          <!--会員でログイン時-->
+          <% if member_signed_in? %>
+          <li class="nav-itme">ようこそ、<%= current_member.last_name %>さん！</li>
+          <li class="nav-item ml-5">
+            <button type="button" class="btn btn-outline-primary btn-sm"> <%= link_to "マイページ", root_path %></button>
+          </li>
+          <li class="nav-item ml-5">
+            <button type="button" class="btn btn-outline-primary btn-sm"> <%= link_to "投稿一覧", root_path %> </button>
+          </li>
+          <li class="nav-item ml-5">
+            <button type="button" class="btn btn-outline-primary btn-sm"> <%= link_to "一週間予定", root_path %> </button>
+          </li>
+          <li class="nav-item ml-5 mr-5">
+            <button type="button" class="btn btn-outline-primary btn-sm"> <%= link_to "ログアウト", destroy_member_session_path, method: :delete %> </button>
+          </li>
+          <!--管理者でログイン時-->
+          <% elsif admin_signed_in? %>
+          <li class="nav-item">
+            <button type="button" class="btn btn-outline-primary btn-sm"> <%= link_to "メンバー一覧", root_path %></button>
+          </li>
+          <li class="nav-item ml-5">
+            <button type="button" class="btn btn-outline-primary btn-sm"> <%= link_to "投稿一覧", admin_customers_path %> </button>
+          </li>
+          <li class="nav-item ml-5">
+            <button type="button" class="btn btn-outline-primary btn-sm"> <%= link_to "予定一覧", root_path %> </button>
+          </li>
+          <li class="nav-item ml-5 mr-5">
+            <button type="button" class="btn btn-outline-primary btn-sm"> <%= link_to "ログアウト", destroy_admin_session_path, method: :delete %> </button>
+          </li>
+          <!--ログイン前-->
+          <% else %>
+          <li class="nav-item">
+            <button type="button" class="btn btn-outline-primary btn-sm"> <%= link_to "About", root_path %></button>
+          </li>
+          <li class="nav-item ml-5">
+            <button type="button" class="btn btn-outline-primary btn-sm"> <%= link_to "新規登録", new_member_registration_path %> </button>
+          </li>
+          <li class="nav-item ml-5 mr-5">
+            <button type="button" class="btn btn-outline-primary btn-sm"> <%= link_to "ログイン", new_member_session_path %></button>
+          <% end %>
+          </li>
+        </ul>
+      </div>
+    </header>
     <%= yield %>
   </body>
 </html>
