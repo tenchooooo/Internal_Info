@@ -1,5 +1,22 @@
+<h2>投稿一覧</h2>
+<%= link_to "新規投稿", new_post_path %>
+
 <!--タグリスト-->
 <% @tag_list.each do |list| %>
   <%= list.name %>
-<%="(#{list.posts.count})"%>
+  <%="(#{list.posts.count})"%>
 <% end %>
+
+
+<div class="col-3">
+  <% @posts.each do |post| %>
+    <div class="card-borderless mb-5">
+      <!--% if item.is_active == true %>-->
+        <%= link_to posts_path(post.id) do %>
+          <%= image_tag post.image, size: '250x180' %> <br>
+        <% end %>
+        <%= post.subject %><br>
+        <%= post.text %>
+    </div>
+  <% end %>
+</div>

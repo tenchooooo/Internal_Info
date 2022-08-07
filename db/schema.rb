@@ -86,7 +86,7 @@ ActiveRecord::Schema.define(version: 2022_08_06_043624) do
     t.integer "member_id", null: false
     t.string "subject", null: false
     t.text "text", null: false
-    t.string "check_count", null: false
+    t.string "check_count"
     t.datetime "limit", null: false
     t.boolean "browse_status", default: true, null: false
     t.datetime "created_at", precision: 6, null: false

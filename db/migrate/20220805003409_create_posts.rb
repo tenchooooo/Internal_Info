@@ -4,7 +4,7 @@ class CreatePosts < ActiveRecord::Migration[6.1]
       t.integer :member_id, null: false
       t.string :subject, null: false
       t.text :text, null: false
-      t.string :check_count, null: false
+      t.string :check_count
       t.datetime :limit, null: false
       t.boolean :browse_status, null: false, default: true
       t.timestamps
