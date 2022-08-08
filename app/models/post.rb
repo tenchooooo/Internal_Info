@@ -2,6 +2,7 @@ class Post < ApplicationRecord
    has_one_attached :image
    has_many :post_tags,dependent: :destroy
    has_many :tags,through: :post_tags
+   enum browsestatus: { open: 0, closed: 1 }
 
    def save_tag(sent_tags)
     # タグが存在していれば、タグの名前を配列としてすべて取得(unless~「タグが存在してるか？」)

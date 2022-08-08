@@ -19,6 +19,9 @@ class Public::PostsController < ApplicationController
 
   def index
     @posts = Post.all
+    if @posts.limit > date.naw
+      @brouse.status => "2"
+    end
     @tag_list = Tag.all
   end
 
@@ -42,7 +45,7 @@ class Public::PostsController < ApplicationController
       render:edit
     end
   end
-  
+
   def search
     @tag_list = Tag.all # 投稿一覧表示ページでもすべてのタグを表示するために、タグを全聚徳
     @tag = Tag.find(params[:tag_id]) # クリックしたタグを取得
@@ -52,7 +55,7 @@ class Public::PostsController < ApplicationController
   private
 
   def post_params
-    params.require(:post).permit(:subject, :text, :image, :limit)
+    params.require(:post).permit(:subject, :text, :image, :limit, :browse_status)
   end
 
 end
