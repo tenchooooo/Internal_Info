@@ -21,7 +21,13 @@ get 'top' => 'public/homes#top'
 
 scope module: :public do
   resources :posts
+  # タグによって絞り込んだ投稿を表示するアクションへのルーティング
+  resources :tags do
+    get 'posts', to: 'posts#search'
+  end
 end
+
+
 
   # For details on the DSL available within this file, see https://guides.rubyonrails.org/routing.html
 end

@@ -1,3 +1,17 @@
-<% @post_tags.each do |tag| %>
-  <%=tag.name%><%="(#{tag.posts.count})" %>
-<% end %>
+<div class="container">
+  <% @post_tags.each do |tag| %>
+    <%=tag.name%><%="(#{tag.posts.count})" %>
+  <% end %>
+
+  <div class="row">
+    <div class="image">
+      <%= image_tag @post.image, size: '420x594' %>
+    </div>
+    <div class="contents m-5">
+      <h2><span><%= @post.subject %></span></h2><br>
+      <p><span><%= @post.text %></span></p>
+      <p></p>
+
+    </div>
+  </div>
+</div>

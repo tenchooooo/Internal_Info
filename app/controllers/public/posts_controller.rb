@@ -29,7 +29,7 @@ class Public::PostsController < ApplicationController
 
   def edit
     @post = Post.find(params[:id])
-    @tag_list = @@post,tags.pluck(:name).join(nil)
+    @tag_list = @post,tags.pluck(:name).join(nil)
   end
 
   def update
@@ -41,6 +41,12 @@ class Public::PostsController < ApplicationController
     else
       render:edit
     end
+  end
+  
+  def search
+    @tag_list = Tag.all # 投稿一覧表示ページでもすべてのタグを表示するために、タグを全聚徳
+    @tag = Tag.find(params[:tag_id]) # クリックしたタグを取得
+    @posts = @tag.posts.all # クリックしたタグに紐づけられた投稿をすべて表示
   end
 
   private

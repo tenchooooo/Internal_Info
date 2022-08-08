@@ -1,22 +1,35 @@
-<h2>投稿一覧</h2>
-<%= link_to "新規投稿", new_post_path %>
+<div class="container">
+  <h2>投稿一覧</h2>
+  <%= link_to "新規投稿", new_post_path %>
 
-<!--タグリスト-->
-<% @tag_list.each do |list| %>
-  <%= link_to list.name, posts_path(tag_id: list.id) %>
-  <%="(#{list.posts.count})"%>
-<% end %>
+  <!--タグリスト-->
+  <% @tag_list.each do |list| %>
+    <%= link_to list.name, tag_posts_path(tag_id: list.id) %>
+    <%="(#{list.posts.count})"%>
+  <% end %>
 
-
-<div class="col-3">
   <% @posts.each do |post| %>
-    <div class="card-borderless mb-5">
-      <!--% if item.is_active == true %>-->
-        <%= link_to posts_path(post.id) do %>
-          <%= image_tag post.image, size: '250x180' %> <br>
-        <% end %>
-        <%= post.subject %><br>
-        <%= post.text %>
+    <div class="card mb-3" >
+      <div class="row g-0">
+        <div class="card-image col-md-4">
+          <%= link_to post_path(post.id) do %>
+            <%= image_tag post.image, size: '105x148' %>
+          <% end %>
+          </div>
+          <div class="card-text col-md-8 m-auto">
+            <p>
+              <%= link_to post_path(post.id) do %>
+              <%= post.subject.truncate(25) %>
+              <% end %>
+            </p>
+            <p><%= post.text %></p>
+          </div>
+        </div>
+      </div>
+      <div class="card-body">
+        <!--% if item.is_active == true %>-->
+
     </div>
   <% end %>
 </div>
+
