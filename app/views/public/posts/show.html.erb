@@ -1,6 +1,8 @@
 <div class="container">
+  タグ：
   <% @post_tags.each do |tag| %>
-    <%=tag.name%><%="(#{tag.posts.count})" %>
+    <%=tag.name%>
+    <!--<%="(#{tag.posts.count})" %>-->
   <% end %>
 
   <div class="row">

@@ -19,6 +19,7 @@ class Public::PostsController < ApplicationController
 
   def index
     @posts = Post.all
+    # @posts = Post.where("posts.limit > ?", DateTime.now).reorder(:limit)
     @tag_list = Tag.all
   end
 
