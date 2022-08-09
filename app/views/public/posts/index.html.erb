@@ -12,9 +12,10 @@
     <div class="card mb-3" >
       <div class="row g-0">
         <div class="card-image col-md-4">
-          <%= link_to post_path(post.id) do %>
-            <%= image_tag post.image, size: '105x148' %>
-          <% end %>
+          <% if post.browse_status == 0 %>
+            <%= link_to post_path(post.id) do %>
+              <%= image_tag post.image, size: '105x148' %>
+            <% end %>
           </div>
           <div class="card-text col-md-8 m-auto">
             <p>
@@ -24,8 +25,9 @@
             </p>
             <p><%= post.text %></p>
           </div>
-        </div>
+        <% end %>
       </div>
+    </div>
 
     <div class="card-body">
       <!--% if item.is_active == true %>-->
