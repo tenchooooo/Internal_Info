@@ -19,9 +19,6 @@ class Public::PostsController < ApplicationController
 
   def index
     @posts = Post.all
-    if @posts.limit > date.naw
-      @brouse.status => "2"
-    end
     @tag_list = Tag.all
   end
 

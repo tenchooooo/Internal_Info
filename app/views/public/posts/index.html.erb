@@ -9,6 +9,10 @@
   <% end %>
 
   <% @posts.each do |post| %>
+    <% if post.limit > Time.now %>
+      <% post.update(browse_status: 1) %>
+    <% end %>
+    <% if post.browse_status == 0 %>
     <div class="card mb-3" >
       <div class="row g-0">
         <div class="card-image col-md-4">
@@ -26,6 +30,7 @@
           </div>
         </div>
       </div>
+      <% end %>
       <div class="card-body">
         <!--% if item.is_active == true %>-->
 
