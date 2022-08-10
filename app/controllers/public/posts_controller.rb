@@ -1,4 +1,14 @@
 class Public::PostsController < ApplicationController
+  before_action :limit
+
+  def limit
+    @posts = Post.all
+    @posts.each do |post|
+      if post.limit > DateTime.now
+        post.update(browse_status: 1)
+      end
+    end
+  end
 
   def new
     @post = Post.new
@@ -18,10 +28,6 @@ class Public::PostsController < ApplicationController
   end
 
   def index
-    @post = Post
-    if @post.limit > DateTime.now
-      @post.update(browse_status: 1)
-    end
     @posts = Post.all
     # @posts = Post.where("posts.limit > ?", DateTime.now).reorder(:limit)
     @tag_list = Tag.all
