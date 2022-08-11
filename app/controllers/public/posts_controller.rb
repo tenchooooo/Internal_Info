@@ -4,7 +4,7 @@ class Public::PostsController < ApplicationController
   def limit
     @posts = Post.all
     @posts.each do |post|
-      if post.limit > DateTime.now
+      if post.limit <= DateTime.now
         post.update(browse_status: 1)
       end
     end
@@ -17,7 +17,7 @@ class Public::PostsController < ApplicationController
   def create
     @post = Post.new(post_params)
     @post.member_id = current_member.id
-    # 受け取った値を","で区切って配列にする。
+    # 受け取った値を" "で区切って配列にする。
     tag_list = params[:post][:name].to_s.split(nil)
     if @post.save
        @post.save_tag(tag_list)
