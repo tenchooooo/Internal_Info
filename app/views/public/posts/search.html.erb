@@ -2,11 +2,19 @@
 <h5>タグが<%=@tag.name%>の投稿一覧</h5>
 
 <!--タグリスト-->
-<% @tag_list.each do |list|%>
-  <%=link_to list.name,tag_posts_path(tag_id: list.id) %>
-  <%="(#{list.posts.count})" %>
-<% end %>
+  <% @tag_list.each do |list| %>
+      <% @posts.each do |post| %>
+        <% if post.browse_status == 1 %>
+          <% @counts = (list.posts.count) - (post.tags.count)%>
+          <% if @counts >= 1 %>
+            <%= link_to list.name, tag_posts_path(tag_id: list.id) %>
+            <%= "(#{@counts})" %>
+          <% end %>
+        <% end %>
+      <% end %>
+  <% end %>
 <% @posts.each do |post| %>
+<% if post.browse_status == 0 %>
 <!--投稿はカードで囲む-->
 <div class="card mb-3" >
   <div class="row g-0">
@@ -30,6 +38,7 @@
       <!--<div id="%=post.id %>">%= render 'favorites/favorite', post: post %></div>-->
   </div>
 </div>
+<% end %>
 <% end %>
 
 

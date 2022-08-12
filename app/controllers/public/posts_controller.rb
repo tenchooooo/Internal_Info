@@ -4,7 +4,7 @@ class Public::PostsController < ApplicationController
   def limit
     @posts = Post.all
     @posts.each do |post|
-      if post.limit <= DateTime.now
+      if post.limit < DateTime.now
         post.update(browse_status: 1)
       end
     end
@@ -36,6 +36,8 @@ class Public::PostsController < ApplicationController
   def show
     @post = Post.find(params[:id])
     @post_tags = @post.tags
+    @posts = Post.all
+
   end
 
   def edit
