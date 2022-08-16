@@ -1,44 +1,40 @@
 <div class="container">
-<h5>タグが<%=@tag.name%>の投稿一覧</h5>
+<h5>タグが<%=@tag.tag_name%>の投稿一覧</h5>
 
 <!--タグリスト-->
-  <% @tag_list.each do |list| %>
-      <% @posts.each do |post| %>
-        <% if post.browse_status == 1 %>
-          <% @counts = (list.posts.count) - (post.tags.count)%>
-          <% if @counts >= 1 %>
-            <%= link_to list.name, tag_posts_path(tag_id: list.id) %>
-            <%= "(#{@counts})" %>
-          <% end %>
-        <% end %>
-      <% end %>
+  <% @tag_list.each do |list|%>
+    <% if list.posts.where(browse_status: 0).count !=0 %>
+      <%=link_to list.tag_name,tag_posts_path(tag_id: list.id) %>
+      <%="(#{list.posts.where(browse_status: 0).count})" %>
+    <% end %>
   <% end %>
+
 <% @posts.each do |post| %>
-<% if post.browse_status == 0 %>
-<!--投稿はカードで囲む-->
-<div class="card mb-3" >
-  <div class="row g-0">
-    <!--タイトル表示される文字数は２５文字までにしてます-->
-    <div class="card-image col-md-4">
-      <%= link_to post_path(post.id) do %>
-        <%= image_tag post.image, size: '105x148' %>
-      <% end %>
+  <% if post.browse_status == "open" %>
+  <!--投稿はカードで囲む-->
+    <div class="card mb-3" >
+      <div class="row g-0">
+      <!--タイトル表示される文字数は２５文字までにしてます-->
+        <div class="card-image col-md-4">
+          <%= link_to post_path(post.id) do %>
+            <%= image_tag post.image, size: '105x148' %>
+          <% end %>
+        </div>
+        <div class="card-text col-md-8 m-auto">
+          <p>
+            <%= link_to post_path(post.id) do %>
+            <%= post.subject.truncate(25) %>
+            <% end %>
+          </p>
+          <p>
+            <%= post.text.truncate(25) %>
+          </p>
+        </div>
+        <!--お気に入り、コメント数、投稿者は部分テンプレ-->
+        <!--<div id="%=post.id %>">%= render 'favorites/favorite', post: post %></div>-->
+      </div>
     </div>
-    <div class="card-text col-md-8 m-auto">
-      <p>
-        <%= link_to post_path(post.id) do %>
-        <%= post.subject.truncate(25) %>
-        <% end %>
-      </p>
-      <p>
-        <%= post.text.truncate(25) %>
-      </p>
-    </div>
-    <!--お気に入り、コメント数、投稿者は部分テンプレ-->
-      <!--<div id="%=post.id %>">%= render 'favorites/favorite', post: post %></div>-->
-  </div>
-</div>
-<% end %>
+  <% end %>
 <% end %>
 
 

@@ -4,8 +4,9 @@ class Public::PostsController < ApplicationController
   def limit
     @posts = Post.all
     @posts.each do |post|
-      if post.limit < DateTime.now
+      if post.limit >= Time.now.tomorrow
         post.update(browse_status: 1)
+        post.tags.update(tag_status: 1)
       end
     end
   end
@@ -15,29 +16,27 @@ class Public::PostsController < ApplicationController
   end
 
   def create
-    @post = Post.new(post_params)
-    @post.member_id = current_member.id
+    @post = current_member.posts.new(post_params)
     # 受け取った値を" "で区切って配列にする。
-    tag_list = params[:post][:name].to_s.split(nil)
+    tag_list = params[:post][:tag_name].to_s.split(nil)
     if @post.save
        @post.save_tag(tag_list)
-       redirect_to posts_path, notice:'投稿完了しました'
+       redirect_to posts_path, success: t('投稿完了しました')
     else
-      render:new
+      render　:new
     end
   end
 
   def index
     @posts = Post.all
-    # @posts = Post.where("posts.limit > ?", DateTime.now).reorder(:limit)
     @tag_list = Tag.all
+    @post = current_member.posts.new
+
   end
 
   def show
     @post = Post.find(params[:id])
-    @post_tags = @post.tags
-    @posts = Post.all
-
+    @tags = @post.tags.pluck(:tag_name).join(',')
   end
 
   def edit
@@ -47,20 +46,29 @@ class Public::PostsController < ApplicationController
 
   def update
     @post = Post.find(params[:id])
-    tag_list = params[:post][:name].split(nil)
+    tags = params[:post][:tag_name].split(nil)
     if @post.update(post_params)
-      @post.save_tag(tag_list)
-      redirect_to post_path(@post.id),notice:'投稿完了しました。'
+      @post.update_tags(tags)
+      redirect_to post_path(@post.id), success: t('投稿完了しました。')
     else
-      render:edit
+      render :edit
     end
+  end
+
+  def destroy
+    post = Post.find(params[:id])
+    post.destroy
+    redirect_to posts_path, success: t('削除しました')
   end
 
   def search
     @tag_list = Tag.all # 投稿一覧表示ページでもすべてのタグを表示するために、タグを全聚徳
     @tag = Tag.find(params[:tag_id]) # クリックしたタグを取得
     @posts = @tag.posts.all # クリックしたタグに紐づけられた投稿をすべて表示
+
   end
+
+
 
   private
 

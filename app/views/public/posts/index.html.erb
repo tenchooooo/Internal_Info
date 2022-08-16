@@ -3,20 +3,16 @@
   <%= link_to "新規投稿", new_post_path %>
 
   <!--タグリスト-->
-  <% @tag_list.each do |list| %>
-      <% @posts.each do |post| %>
-        <% if post.browse_status == 1 %>
-          <% @counts = (list.posts.count) - (post.tags.count)%>
-          <% if @counts >= 1 %>
-            <%= link_to list.name, tag_posts_path(tag_id: list.id) %>
-            <%= "(#{@counts})" %>
-          <% end %>
-        <% end %>
-      <% end %>
+  <% @tag_list.each do |list|%>
+    <% if list.posts.where(browse_status: 0).count !=0 %>
+      <%=link_to list.tag_name,tag_posts_path(tag_id: list.id) %>
+    
+      <%="(#{list.posts.where(browse_status: 0).count})" %>
+    <% end %>
   <% end %>
 
   <% @posts.each do |post| %>
-    <% if post.browse_status == 0 %>
+    <% if post.browse_status == "open" %>
       <div class="card mb-3" >
         <div class="row g-0">
           <div class="card-image col-md-4">
