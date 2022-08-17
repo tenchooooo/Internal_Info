@@ -1,15 +1,4 @@
 class Public::PostsController < ApplicationController
-  before_action :limit
-
-  def limit
-    @posts = Post.all
-    @posts.each do |post|
-      if post.limit >= Time.now.tomorrow
-        post.update(browse_status: 1)
-        post.tags.update(tag_status: 1)
-      end
-    end
-  end
 
   def new
     @post = Post.new
@@ -28,7 +17,10 @@ class Public::PostsController < ApplicationController
   end
 
   def index
+    @limit = Post.where("post.limit > ?", DateTime.now)
     @posts = Post.all
+
+
     @tag_list = Tag.all
     @post = current_member.posts.new
 
@@ -73,7 +65,7 @@ class Public::PostsController < ApplicationController
   private
 
   def post_params
-    params.require(:post).permit(:subject, :text, :image, :limit, :browse_status)
+    params.require(:post).permit(:subject, :text, :image, :limit, :browse_status, :date)
   end
 
 end
