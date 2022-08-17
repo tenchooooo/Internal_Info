@@ -5,4 +5,6 @@ class Member < ApplicationRecord
          :recoverable, :rememberable, :validatable
 
   has_many :posts, dependent: :destroy
+  has_many :checks, dependent: :destroy
+
 end

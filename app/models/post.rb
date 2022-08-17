@@ -2,6 +2,9 @@ class Post < ApplicationRecord
    has_one_attached :image
    has_many :post_tags, dependent: :destroy
    has_many :tags, through: :post_tags
+   belongs_to :user
+   has_many :checks, dependent: :destroy
+
    enum browse_status: { open: 0, closed: 1 }
 
   def save_tag(sent_tags)
@@ -20,5 +23,9 @@ class Post < ApplicationRecord
       new_post_tag = Tag.find_or_create_by(tag_name: new)
       self.tags << new_post_tag
     end
+  end
+
+  def checked?(member)
+    checks.where(member_id: member.id).exists?
   end
 end

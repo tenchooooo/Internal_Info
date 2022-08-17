@@ -10,7 +10,19 @@
       <h2><span><%= @post.subject %></span></h2><br>
       <p><span><%= @post.text %></span></p>
       <p></p>
-
+      <% if @post.checked?(current_member) %>
+        <!--一致するレコードが存在する＝すでにいいね済みの場合はdestroyアクションへ-->
+        <%= link_to post_checks_path(@post.id), method: :delete do %>
+          <span style="color:red;">確認</span>
+        <% end %>
+        <%= "確認数:#{@post.checks.count}" %>
+      <% else %>
+        <!--一致するレコードが存在しない＝まだいいねしていない場合はcreateアクションへ-->
+        <%= link_to post_checks_path(@post.id), method: :post do %>
+          <span>確認</span>
+        <% end %>
+        <%= "確認数:#{@post.checks.count}" %>
+      <% end %>
     </div>
   </div>
 </div>

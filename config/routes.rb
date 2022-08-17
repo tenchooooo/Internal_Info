@@ -19,11 +19,17 @@ devise_for :admin, skip: [:registrations, :passwords] ,controllers: {
 root to: "homes#top"
 get 'top' => 'public/homes#top'
 
+
+
 scope module: :public do
   resources :posts
   # タグによって絞り込んだ投稿を表示するアクションへのルーティング
   resources :tags do
     get 'posts', to: 'posts#search'
+  end
+
+  resources :post do
+    resource :checks, only: [:create, :destroy]
   end
 end
 
