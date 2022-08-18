@@ -3,10 +3,16 @@ class Public::CommentsController < ApplicationController
   def create
     @comment = current_member.comments.new(comment_params)
     if @comment.save
-      redirect_to posts_path, success: t('投稿完了しました')
+      redirect_back(fallback_location: root_path) #コメント送信後は、一つ前のページへリダイレクトさせる。
     else
-      redirect_to posts_path, success: t('投稿完了しました')
+      redirect_back(fallback_location: root_path)
     end
+  end
+
+  def destroy
+    comment = Comment.find(params[:id])
+    comment.destroy
+    redirect_back(fallback_location: root_path)
   end
 
   private

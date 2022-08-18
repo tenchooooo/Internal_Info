@@ -16,7 +16,7 @@
 
   <% @posts.each do |post| %>
     <% if post.browse_status == "open" %>
-      <div class="card mb-3" >
+      <div class="card col-6" >
         <div class="row g-0">
           <div class="card-image col-md-4">
             <%= link_to post_path(post.id) do %>
@@ -31,7 +31,7 @@
                 <% post.subject.truncate(25) %>
               <% end %>
             </p>
-            <p><%= "確認：#{post.checks.count}件" %></p>
+            <p><%= "確認：#{post.checks.count}件" %> / <%= "コメント：#{post.comments.count}件" %></p>
 
           </div>
         </div>

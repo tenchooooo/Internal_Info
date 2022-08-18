@@ -11,7 +11,7 @@ class Public::PostsController < ApplicationController
     tag_list = params[:post][:tag_name].to_s.split(nil)
     if @post.save
        @post.save_tag(tag_list)
-       redirect_to posts_path, success: t('投稿完了しました')
+       redirect_to post_path(@post.id), success: t('投稿完了しました')
     else
       render　:new
     end

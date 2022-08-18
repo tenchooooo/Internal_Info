@@ -3,10 +3,11 @@
   <%= @tags %>
 
   <div class="row">
-    <div class="image">
+    <div class="image col-6">
       <%= image_tag @post.image, size: '420x594' %>
+      <p>閲覧期限：<%= @post.limit.to_s(:datetime_jp) %></p>
     </div>
-    <div class="contents m-5">
+    <div class="contents col-6">
       <h2><span><%= @post.subject %></span></h2><br>
       <p><span>内容：<%= @post.text %></span></p>
       <p></p>
@@ -25,17 +26,26 @@
       <% end %>
 
       <!--コメント-->
+      <p class="m-2">コメント投稿</p>
       <%= form_with(model:[@post, @comment], method: :post) do |f| %>
-        <%= f.text_area :comment_content %>
+        <span><%= f.text_area :comment_content %></span>
         <%= f.hidden_field :post_id, value: @post.id %>
-        <%= f.submit 'コメントする', class:"btn btn-sm btn-success" %>
+        <p class=""><%= f.submit 'コメントする', class:"btn btn-sm btn-success" %></p>
       <% end %>
     </div>
   </div>
   <div class="row">
-    <h6>コメント一覧</h6>
+    <p>コメント一覧 (コメント数：<%= @comments.count %>件)<p>
     <% @comments.each do |comment| %>
-     <p><%= comment.comment_content %></p> <!--コメントの内容が表示される-->
+      <table class="table table-borderless">
+        <tr><th class="col-1">投稿者：</th><td class="col-11"><%= comment.post.member.department %> <%= comment.post.member.last_name %></td></tr>
+        <tr><th class="col-1">本　文：</th><td class="col-11"><%= comment.comment_content %></td></tr><!--コメントの内容が表示される-->
+        <tr><th class="col-1">投稿日：</th><td class="col-11"><%= comment.created_at.to_s(:datetime_jp) %></td></tr>
+        <% if comment.post.member == current_member %>
+          <tr><th></th><td><%= link_to "削除", post_comment_path(comment.id), method: :delete, "data-confirm" => "本当に削除しますか？", class:"btn btn-sm btn-danger" %></td></tr>
+        <% end %>
+        --------------------------------------------------------------------------------------------------------------------
+      </table>
     <% end %>
   </div>
 
