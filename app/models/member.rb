@@ -6,5 +6,11 @@ class Member < ApplicationRecord
 
   has_many :posts, dependent: :destroy
   has_many :checks, dependent: :destroy
+  has_many :comments  #User.commentsで、ユーザーの所有するコメントを取得できる。
+  
+  
+  def full_name
+    last_name + first_name
+  end
 
 end

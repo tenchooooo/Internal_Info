@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2022_08_17_120458) do
+ActiveRecord::Schema.define(version: 2022_08_18_070145) do
 
   create_table "active_storage_attachments", force: :cascade do |t|
     t.string "name", null: false
@@ -61,6 +61,16 @@ ActiveRecord::Schema.define(version: 2022_08_17_120458) do
     t.index ["post_id"], name: "index_checks_on_post_id"
   end
 
+  create_table "comments", force: :cascade do |t|
+    t.text "comment_content"
+    t.integer "member_id", null: false
+    t.integer "post_id", null: false
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["member_id"], name: "index_comments_on_member_id"
+    t.index ["post_id"], name: "index_comments_on_post_id"
+  end
+
   create_table "members", force: :cascade do |t|
     t.string "email", default: "", null: false
     t.string "encrypted_password", default: "", null: false
@@ -96,7 +106,7 @@ ActiveRecord::Schema.define(version: 2022_08_17_120458) do
     t.string "subject", null: false
     t.text "text", null: false
     t.string "check_count"
-    t.date "limit"
+    t.datetime "limit"
     t.integer "browse_status", default: 0, null: false
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
@@ -113,6 +123,8 @@ ActiveRecord::Schema.define(version: 2022_08_17_120458) do
   add_foreign_key "active_storage_variant_records", "active_storage_blobs", column: "blob_id"
   add_foreign_key "checks", "members"
   add_foreign_key "checks", "posts"
+  add_foreign_key "comments", "members"
+  add_foreign_key "comments", "posts"
   add_foreign_key "post_tags", "posts"
   add_foreign_key "post_tags", "tags"
 end

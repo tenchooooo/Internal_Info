@@ -1,8 +1,12 @@
 <div class="container">
   <h2>投稿一覧</h2>
-  <%= link_to "新規投稿", new_post_path %>
+  <p>
+    <%= link_to "新規投稿", new_post_path %>
+  </p>
+
 
   <!--タグリスト-->
+  <%= "タグリスト："%>
   <% @tag_list.each do |list|%>
     <% if list.posts.where(browse_status: 0).count !=0 %>
       <%=link_to list.tag_name,tag_posts_path(tag_id: list.id) %>
@@ -11,7 +15,6 @@
   <% end %>
 
   <% @posts.each do |post| %>
-  <% if @limit %>
     <% if post.browse_status == "open" %>
       <div class="card mb-3" >
         <div class="row g-0">
@@ -21,17 +24,19 @@
             <% end %>
           </div>
           <div class="card-text col-md-8 m-auto">
-            <p>
+            <p><%= "投稿日：#{post.created_at.to_s(:datetime_jp)}" %></p>
+            <p><%= "投稿者：#{post.member.department}  #{post.member.last_name}" %></p>
+            <p>件名：
               <%= link_to post_path(post.id) do %>
-                <%= post.subject.truncate(25) %>
+                <% post.subject.truncate(25) %>
               <% end %>
             </p>
-            <p><%= post.text %></p>
+            <p><%= "確認：#{post.checks.count}件" %></p>
+
           </div>
         </div>
       </div>
     <% end %>
-  <% end %>
   <% end %>
 </div>
 

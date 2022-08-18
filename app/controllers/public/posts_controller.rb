@@ -1,4 +1,5 @@
 class Public::PostsController < ApplicationController
+  before_action :authenticate_member!
 
   def new
     @post = Post.new
@@ -17,9 +18,12 @@ class Public::PostsController < ApplicationController
   end
 
   def index
-    @limit = Post.where("post.limit > ?", DateTime.now)
     @posts = Post.all
-
+    @posts.each do |post|
+      if post.limit.to_s(:datetime_jp) < DateTime.now.to_s(:datetime_jp)
+        post.update(browse_status:1)
+      end
+    end
 
     @tag_list = Tag.all
     @post = current_member.posts.new
@@ -29,6 +33,8 @@ class Public::PostsController < ApplicationController
   def show
     @post = Post.find(params[:id])
     @tags = @post.tags.pluck(:tag_name).join(',')
+    @comments = @post.comments  #投稿詳細に関連付けてあるコメントを全取得
+    @comment = current_member.comments.new  #投稿詳細画面でコメントの投稿を行うので、formのパラメータ用にCommentオブジェクトを取得
   end
 
   def edit

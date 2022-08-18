@@ -8,21 +8,35 @@
     </div>
     <div class="contents m-5">
       <h2><span><%= @post.subject %></span></h2><br>
-      <p><span><%= @post.text %></span></p>
+      <p><span>内容：<%= @post.text %></span></p>
       <p></p>
       <% if @post.checked?(current_member) %>
         <!--一致するレコードが存在する＝すでにいいね済みの場合はdestroyアクションへ-->
-        <%= link_to post_checks_path(@post.id), method: :delete do %>
-          <span style="color:red;">確認</span>
-        <% end %>
-        <%= "確認数:#{@post.checks.count}" %>
+        <%= link_to "確認済",post_checks_path(@post.id), method: :delete, class:"btn btn-sm btn-dark"%>
+        <%= "確認数 : #{@post.checks.count}" %>
       <% else %>
         <!--一致するレコードが存在しない＝まだいいねしていない場合はcreateアクションへ-->
-        <%= link_to post_checks_path(@post.id), method: :post do %>
-          <span>確認</span>
-        <% end %>
-        <%= "確認数:#{@post.checks.count}" %>
+        <%= link_to"確認", post_checks_path(@post.id), method: :post, class:"btn btn-sm btn-primary"%>
+        <%= "確認数 : #{@post.checks.count}" %>
+      <% end %>
+      <% if @post.member == current_member %>
+        <%= link_to "編集", edit_post_path(@post), class:"btn btn-sm btn-success"%>
+        <%= link_to "削除", post_path(@post.id), method: :delete, "data-confirm" => "本当に削除しますか？", class:"btn btn-sm btn-danger" %>
+      <% end %>
+
+      <!--コメント-->
+      <%= form_with(model:[@post, @comment], method: :post) do |f| %>
+        <%= f.text_area :comment_content %>
+        <%= f.hidden_field :post_id, value: @post.id %>
+        <%= f.submit 'コメントする', class:"btn btn-sm btn-success" %>
       <% end %>
     </div>
   </div>
+  <div class="row">
+    <h6>コメント一覧</h6>
+    <% @comments.each do |comment| %>
+     <p><%= comment.comment_content %></p> <!--コメントの内容が表示される-->
+    <% end %>
+  </div>
+
 </div>

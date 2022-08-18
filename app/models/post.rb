@@ -2,8 +2,10 @@ class Post < ApplicationRecord
    has_one_attached :image
    has_many :post_tags, dependent: :destroy
    has_many :tags, through: :post_tags
-   belongs_to :user
+   belongs_to :member
    has_many :checks, dependent: :destroy
+   has_many :comments, dependent: :destroy #Post.commentsで、投稿が所有するコメントを取得できる。
+   
 
    enum browse_status: { open: 0, closed: 1 }
 
