@@ -23,6 +23,7 @@ get 'top' => 'public/homes#top'
 
 scope module: :public do
   resources :posts
+  resources :schedules
   # タグによって絞り込んだ投稿を表示するアクションへのルーティング
   resources :tags do
     get 'posts', to: 'posts#search'
