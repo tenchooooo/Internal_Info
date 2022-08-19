@@ -10,7 +10,7 @@ class Public::CommentsController < ApplicationController
   end
 
   def destroy
-    comment = Comment.find(params[:id])
+    comment = Comment.find_by(id: params[:id], post_id: params[:post_id])
     comment.destroy
     redirect_back(fallback_location: root_path)
   end
