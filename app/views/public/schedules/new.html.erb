@@ -1,0 +1,17 @@
+<h3>予定作成</h3>
+<%= form_with model: @schedule do |f| %>
+
+  <h4>日付を選択</h4>
+  <%= f.date_field :day %> <br>
+  
+  <%= f.radio_button :select_schedule, 1, checked: "checked" %>
+  <%= f.label :select_schedule, "出欠勤情報" %> <br>
+    <%= f.radio_button :attendance, "出欠勤情報" %><br>
+  
+  <%= f.radio_button :select_schedule, 2 %>
+  <%= f.label :select_schedule, "出張情報" %> <br>
+  
+  <%= f.radio_button :select_schedule, 3 %>
+  <%= f.label :select_schedule, "その他予定" %> <br>
+  
+<% end %>

@@ -6,8 +6,13 @@
       <p>皆さんの予定が確認できます。</p>
     </div>
     <div class="col-12 mt-3">
+      <%= link_to "新規作成", new_schedule_path %>
       <%= week_calendar events: @schedules do |date, schedules| %>
         <%= date.day %>
+        <% schedules.each do |schedule| %><br />
+　　　  <%= schedule.start_time.strftime('%H:%M') %>　#スケジュールの開始時間を表示
+　　　  <%= link_to schedule.content,schedule_path(schedule) %>
+　　<% end %>
       <% end %>
     </div>
   </div>
