@@ -116,8 +116,9 @@ ActiveRecord::Schema.define(version: 2022_08_19_014116) do
     t.date "day", null: false
     t.string "time", null: false
     t.integer "member_id", null: false
-    t.string "attendance"
+    t.integer "attendance"
     t.string "trip"
+    t.string "go_out"
     t.string "other"
     t.datetime "start_time", null: false
     t.datetime "created_at", precision: 6, null: false

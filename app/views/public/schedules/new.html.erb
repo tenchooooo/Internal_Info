@@ -3,15 +3,24 @@
 
   <h4>日付を選択</h4>
   <%= f.date_field :day %> <br>
-  
+
   <%= f.radio_button :select_schedule, 1, checked: "checked" %>
   <%= f.label :select_schedule, "出欠勤情報" %> <br>
-    <%= f.radio_button :attendance, "出欠勤情報" %><br>
-  
+    <%= f.radio_button :attendance, Schedule.attendances.key(0) %>
+    <%= f.label :attendance, Schedule.attendances_i18n[:oneday_off] %>
+    <%= f.radio_button :attendance, Schedule.attendances.key(1) %>
+    <%= f.label :attendance, Schedule.attendances_i18n[:morning_off] %>
+    <%= f.radio_button :attendance, Schedule.attendances.key(2) %>
+    <%= f.label :attendance, Schedule.attendances_i18n[:afternoon_off] %>
+    <%= f.radio_button :attendance, Schedule.attendances.key(3) %>
+    <%= f.label :attendance, Schedule.attendances_i18n[:leaving_early] %> <br>
+
   <%= f.radio_button :select_schedule, 2 %>
   <%= f.label :select_schedule, "出張情報" %> <br>
-  
+    <%= f.radio_button :trip %>
+    <%= f.label :trip, "出張"%>
+
   <%= f.radio_button :select_schedule, 3 %>
   <%= f.label :select_schedule, "その他予定" %> <br>
-  
+
 <% end %>
