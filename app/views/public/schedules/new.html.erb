@@ -29,5 +29,6 @@
   <span class="js-check"><%= f.label :select_schedule, "その他予定" %></span> <br>
   <%= f.text_field :other %>
   <%= f.hidden_field :member_id, :value=> current_member.id %>
+  <%= f.submit "登録" %>
 
 <% end %>

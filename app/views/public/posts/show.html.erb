@@ -13,11 +13,11 @@
       <p></p>
       <% if @post.checked?(current_member) %>
         <!--一致するレコードが存在する＝すでにいいね済みの場合はdestroyアクションへ-->
-        <%= link_to "確認済",post_checks_path(@post.id), method: :delete, class:"btn btn-sm btn-dark"%>
+        <%= button_to "確認済", post_checks_path(@post), method: :delete, class:"btn btn-sm btn-dark" %>
         <%= "確認数 : #{@post.checks.count}" %>
       <% else %>
         <!--一致するレコードが存在しない＝まだいいねしていない場合はcreateアクションへ-->
-        <%= link_to"確認", post_checks_path(@post.id), method: :post, class:"btn btn-sm btn-primary"%>
+        <%= button_to "確認", post_checks_path(@post), method: :post, class:"btn btn-sm btn-primary" %>
         <%= "確認数 : #{@post.checks.count}" %>
       <% end %>
       <% if @post.member == current_member %>
@@ -42,7 +42,7 @@
         <tr><th class="col-1">本　文：</th><td class="col-11"><%= comment.comment_content %></td></tr><!--コメントの内容が表示される-->
         <tr><th class="col-1">投稿日：</th><td class="col-11"><%= comment.created_at.to_s(:datetime_jp) %></td></tr>
         <% if comment.post.member == current_member %>
-          <tr><th></th><td><%= link_to "削除", post_comment_path(comment.post.id, comment.id), method: :delete, "data-confirm" => "本当に削除しますか？", class:"btn btn-sm btn-danger" %></td></tr>
+          <tr><th></th><td><%= button_to "削除", post_comment_path(comment.post.id, comment.id), method: :delete, "data-confirm" => "本当に削除しますか？", class:"btn btn-sm btn-danger" %></td></tr>
         <% end %>
         --------------------------------------------------------------------------------------------------------------------
       </table>
