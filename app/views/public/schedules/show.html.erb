@@ -1,10 +1,10 @@
 <h2>予定</h2>
+
 <% @schedules.each do |schedule| %>
 <table>
-    <tr>
-        <th><%= schedule.day %></th>
-        <th><%= schedule.attendance %></th>
-        <td></td>
-    </tr>
+  <tr>
+    <th>終日休み</th>
+    <td><%= schedule.member.department %>：<%= schedule.member.last_name %></td>
+  </tr>
 </table>
 <% end %>

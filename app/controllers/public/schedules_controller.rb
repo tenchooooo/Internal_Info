@@ -13,11 +13,12 @@ class Public::SchedulesController < ApplicationController
     @schedule = Schedule.new(schedule_params)
     @schedule.member_id = current_member.id
     @schedule.save
-    redirect_to schedule_path(@schedule)
+    redirect_to schedule_path(@schedule.day)
   end
 
   def show
     @schedules = Schedule.where(day: params[:id])
+
   end
 
 
