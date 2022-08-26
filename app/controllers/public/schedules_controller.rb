@@ -6,6 +6,7 @@ class Public::SchedulesController < ApplicationController
 
   def index
     @schedules = Schedule.all.where("day >= ?", Date.current).where("day < ?", Date.current >> 3).order(day: :desc)
+    @schedule = Schedule.find_by(id: params[:format])
   end
 
   def create
@@ -13,6 +14,10 @@ class Public::SchedulesController < ApplicationController
     @schedule.member_id = current_member.id
     @schedule.save
     redirect_to schedule_path(@schedule)
+  end
+
+  def show
+    @schedules = Schedule.where(day: params[:id])
   end
 
 

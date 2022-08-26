@@ -64,3 +64,8 @@ ja:
        morning_off: "午前休み"
        afternoon_off: "午後休み"
        leaving_early: "早退"
+      select_schedule:
+       attendance: "出欠勤情報"
+       trip: "出張情報"
+       go_out: "外出情報"
+       other: "その他情報"

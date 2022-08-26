@@ -1,1 +1,10 @@
 <h2>予定</h2>
+<% @schedules.each do |schedule| %>
+<table>
+    <tr>
+        <th><%= schedule.day %></th>
+        <th><%= schedule.attendance %></th>
+        <td></td>
+    </tr>
+</table>
+<% end %>
