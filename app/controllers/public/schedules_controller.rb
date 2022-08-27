@@ -18,7 +18,10 @@ class Public::SchedulesController < ApplicationController
 
   def show
     @schedules = Schedule.where(day: params[:id])
-
+    @oneday_off_members = Schedule.oneday_off
+    @morning_off_members = Schedule.morning_off
+    @afternoon_off_members = Schedule.afternoon_off
+    @leaving_early_members = Schedule.leaving_early
   end
 
 
