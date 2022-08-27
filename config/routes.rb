@@ -28,7 +28,7 @@ scope module: :public do
   resources :tags do
     get 'posts', to: 'posts#search'
   end
-
+  resources :members, only: [:show, :edit, :update]
   resources :post do
     resource :checks, only: [:create, :destroy]
     resources :comments, only: [:create, :destroy]  #commentsコントローラへのルーティング
