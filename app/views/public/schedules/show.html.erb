@@ -6,17 +6,16 @@
     <th>部署名</th>
     <th>名前</th>
   </tr>
-</table>
 <% @schedules.each do |schedule| %>
-<table border="1" class= 'p-top__introduce'>
   <tr>
     <% if schedule.oneday_off? %>
     <td><%= schedule.member.department %></td>
     <td><%= schedule.member.last_name %></td>
     <% end %>
   </tr>
-</table>
 <% end %>
+</table>
+
 
 <p>午前休み</p>
 <table border="1" class= 'p-top__introduce'>
@@ -24,17 +23,15 @@
     <th>部署名</th>
     <th>名前</th>
   </tr>
-</table>
 <% @schedules.each do |schedule| %>
-<table border="1" class= 'p-top__introduce'>
   <tr>
     <% if schedule.morning_off? %>
     <td><%= schedule.member.department %></td>
     <td><%= schedule.member.last_name %></td>
     <% end %>
   </tr>
+<% end %>  
 </table>
-<% end %>
 
 <p>午後休み</p>
 <table border="1" class= 'p-top__introduce'>
@@ -42,17 +39,16 @@
     <th>部署名</th>
     <th>名前</th>
   </tr>
-</table>
-<% @schedules.each do |schedule| %>
-<table border="1" class= 'p-top__introduce'>
+  <% @schedules.each do |schedule| %>
   <tr>
     <% if schedule.afternoon_off? %>
     <td><%= schedule.member.department %></td>
     <td><%= schedule.member.last_name %></td>
     <% end %>
   </tr>
+  <% end %>
 </table>
-<% end %>
+
 
 <p>出張情報</p>
 <table border="1" class= 'p-top__introduce'>
@@ -61,9 +57,7 @@
     <th>名前</th>
     <th>行先</th>
   </tr>
-</table>
-<% @schedules.each do |schedule| %>
-<table border="1" class= 'p-top__introduce'>
+  <% @schedules.each do |schedule| %>
   <tr>
     <% if schedule.trip? %>
     <td><%= schedule.member.department %></td>
@@ -71,8 +65,9 @@
     <td><%= schedule.trip %></td>
     <% end %>
   </tr>
-</table>
 <% end %>
+</table>
+
 
 <p>外出情報</p>
 <table border="1" class= 'p-top__introduce'>
@@ -81,9 +76,7 @@
     <th>名前</th>
     <th>行先</th>
   </tr>
-</table>
-<% @schedules.each do |schedule| %>
-<table border="1" class= 'p-top__introduce'>
+  <% @schedules.each do |schedule| %>
   <tr>
     <% if schedule.go_out? %>
     <td><%= schedule.member.department %></td>
@@ -91,8 +84,9 @@
     <td><%= schedule.go_out %></td>
     <% end %>
   </tr>
+  <% end %>
 </table>
-<% end %>
+
 
 <p>その他情報</p>
 <table border="1" class= 'p-top__introduce'>
@@ -101,9 +95,7 @@
     <th>名前</th>
     <th>内容</th>
   </tr>
-</table>
-<% @schedules.each do |schedule| %>
-<table border="1" class= 'p-top__introduce'>
+  <% @schedules.each do |schedule| %>
   <tr>
     <% if schedule.other? %>
     <td><%= schedule.member.department %></td>
@@ -111,5 +103,5 @@
     <td><%= schedule.other %></td>
     <% end %>
   </tr>
+  <% end %>
 </table>
-<% end %>

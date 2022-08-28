@@ -39,14 +39,18 @@ class Public::PostsController < ApplicationController
 
   def edit
     @post = Post.find(params[:id])
-    @tag_list = @post,tags.pluck(:name).join(nil)
+    @tags = @post.tags.pluck(:tag_name).join(',')
   end
 
   def update
     @post = Post.find(params[:id])
     tags = params[:post][:tag_name].split(nil)
     if @post.update(post_params)
-      @post.update_tags(tags)
+      @old_relations=PostTag.where(post_id: @post.id)
+      @old_relations.each do |relation|
+        relation.delete
+      end
+      @post.save_tag(tags)
       redirect_to post_path(@post.id), success: t('投稿完了しました。')
     else
       render :edit

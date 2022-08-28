@@ -1,9 +1,21 @@
-  <div class="field">
-    <%= f.label"タグ (,で区切ると複数タグ登録できます)" %>
-    <%= f.text_field :name,value: @tag_list,class:"form-control"%>
-  </div>
+<h3>投稿編集</h3>
+<%= form_with model: @post, url: post_path, method: :patch do |f| %>
 
-　<div class="actions" style="margin:20px 0;">
-    <%= f.submit "投稿",class:"btn btn-outline-primary btn-block" %>
-  </div>
-  <% end %>
+
+  <h4>添付画像</h4>
+  <%= f.file_field :image, accept: "image/*" %>
+
+  <h4>件名</h4>
+  <%= f.text_field :subject %>
+
+  <h4>内容</h4>
+  <%= f.text_area :text %>
+
+  <h4>タグ (半角スペースで区切ると複数タグ登録できます)</h4>
+  <%= f.text_field :tag_name %>
+
+  <h4>閲覧期限</h4>
+  <%= f.date_field :limit %>
+
+  <%= f.submit "投稿" %>
+<% end %>

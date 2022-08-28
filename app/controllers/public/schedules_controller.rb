@@ -24,6 +24,25 @@ class Public::SchedulesController < ApplicationController
     @leaving_early_members = Schedule.leaving_early
   end
 
+  def edit
+    @schedule = Schedule.find(params[:id])
+  end
+
+  def update
+    @schedule = Schedule.find(params[:id])
+    if @schedule.update(schedule_params)
+      redirect_to member_schedules_path(@schedule.member.id)
+    else
+      render :edit
+    end
+  end
+
+  def destroy
+    schedule = Schedule.find(params[:id])
+    schedule.destroy
+    redirect_to request.referer
+  end
+
 
   private
 

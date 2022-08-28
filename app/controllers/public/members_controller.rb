@@ -23,6 +23,7 @@ class Public::MembersController < ApplicationController
   end
 
   def schedules
+    @schedules = Schedule.all
   end
 
   private
