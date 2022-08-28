@@ -5,6 +5,7 @@ class Post < ApplicationRecord
    belongs_to :member
    has_many :checks, dependent: :destroy
    has_many :comments, dependent: :destroy #Post.commentsで、投稿が所有するコメントを取得できる。
+   has_many :checks
 
 
    enum browse_status: { open: 0, closed: 1 }

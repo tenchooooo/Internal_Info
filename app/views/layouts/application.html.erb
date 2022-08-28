@@ -34,7 +34,7 @@
             <button type="button" class="btn btn-outline-primary btn-sm"> <%= link_to "一週間予定", schedules_path %> </button>
           </li>
           <li class="nav-item ml-5 mr-5">
-            <button type="button" class="btn btn-outline-primary btn-sm"> <%= link_to "ログアウト", destroy_member_session_path, method: :delete %> </button>
+            <button type="button" class="btn btn-outline-primary btn-sm"> <%= button_to 'ログアウト', destroy_member_session_path, :method => :delete %> </button>
           </li>
           <!--管理者でログイン時-->
           <% elsif admin_signed_in? %>

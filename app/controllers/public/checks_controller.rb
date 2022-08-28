@@ -12,4 +12,10 @@ class Public::ChecksController < ApplicationController
     redirect_to post_path(params[:post_id])
   end
 
+  def index
+    @post = Post.find_by(id: params[:id])
+    @members = Member.all
+    @checks = Check.where(post_id: @post.id)
+  end
+
 end

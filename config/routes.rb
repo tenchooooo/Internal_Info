@@ -35,6 +35,7 @@ scope module: :public do
 
   resources :post do
     resource :checks, only: [:create, :destroy]
+    resources :checks, only: [:index]
     resources :comments, only: [:create, :destroy]  #commentsコントローラへのルーティング
   end
 end
