@@ -16,6 +16,15 @@ class Public::MembersController < ApplicationController
     end
   end
 
+  def posts
+    @posts = Post.all
+
+    @tag_list = Tag.all
+  end
+
+  def schedules
+  end
+
   private
 
   def member_params

@@ -8,4 +8,5 @@
   <tr><th>電話番号</th><td><%= @member.telephone_number %></td></tr>
   <tr><th>所属部署</th><td><%= @member.department %></td></tr>
 </table>
-<%= link_to "#{@member.first_name}さんの投稿一覧", 
+<%= link_to "#{@member.last_name}さんの投稿一覧", member_posts_path(current_member.id) %>
+<%= link_to "#{@member.last_name}さんの予定一覧", member_schedules_path(current_member.id) %>

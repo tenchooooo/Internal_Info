@@ -22,7 +22,7 @@
       <% end %>
       <% if @post.member == current_member %>
         <%= link_to "編集", edit_post_path(@post), class:"btn btn-sm btn-success"%>
-        <%= link_to "削除", post_path(@post.id), method: :delete, "data-confirm" => "本当に削除しますか？", class:"btn btn-sm btn-danger" %>
+        <%= button_to "削除", post_path(@post.id), method: :delete, "data-confirm" => "本当に削除しますか？", class:"btn btn-sm btn-danger" %>
       <% end %>
 
       <!--コメント-->

@@ -5,7 +5,7 @@ class Post < ApplicationRecord
    belongs_to :member
    has_many :checks, dependent: :destroy
    has_many :comments, dependent: :destroy #Post.commentsで、投稿が所有するコメントを取得できる。
-   
+
 
    enum browse_status: { open: 0, closed: 1 }
 
@@ -23,7 +23,7 @@ class Post < ApplicationRecord
     # 新しいタグを保存
     new_tags.each do |new|
       new_post_tag = Tag.find_or_create_by(tag_name: new)
-      self.tags << new_post_tag
+      post_tags.new(member_id: member_id,tag_id: new_post_tag.id).save
     end
   end
 
