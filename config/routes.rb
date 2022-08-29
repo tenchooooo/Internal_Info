@@ -33,10 +33,13 @@ scope module: :public do
     get 'schedules', to: 'members#schedules'
   end
 
-  resources :post do
+  resources :posts do
     resource :checks, only: [:create, :destroy]
     resources :checks, only: [:index]
-    resources :comments, only: [:create, :destroy]  #commentsコントローラへのルーティング
+    resources :comments, only: [:create, :destroy]#commentsコントローラへのルーティング
+    collection do
+      get 'search'
+    end
   end
 end
 
