@@ -15,7 +15,7 @@ class Public::ChecksController < ApplicationController
   def index
     @post = Post.find_by(id: params[:id])
     @members = Member.all
-    @checks = Check.where(post_id: @post.id)
+    @checks = Check.all
   end
 
 end

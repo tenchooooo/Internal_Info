@@ -1,3 +1,5 @@
+<h3>確認者一覧</h3>
 <% @checks.each do |check| %>
+<%= check.member.department %>:
 <%= check.member.full_name %>
 <% end %>

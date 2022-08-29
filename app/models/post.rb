@@ -5,7 +5,8 @@ class Post < ApplicationRecord
    belongs_to :member
    has_many :checks, dependent: :destroy
    has_many :comments, dependent: :destroy #Post.commentsで、投稿が所有するコメントを取得できる。
-   has_many :checks
+   has_many :checks, dependent: :destroy
+   
 
 
    enum browse_status: { open: 0, closed: 1 }
@@ -28,7 +29,7 @@ class Post < ApplicationRecord
     end
   end
 
-  def checked?(member)
-    checks.where(member_id: member.id).exists?
+  def checked_by?(member) #メンバーIDがcheckテーブル内に存在するか判別する。
+    checks.exists?(member_id: member.id)
   end
 end
