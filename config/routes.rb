@@ -18,7 +18,9 @@ devise_for :admin, skip: [:registrations, :passwords] ,controllers: {
 
 root to: "homes#top"
 get 'top' => 'public/homes#top'
-
+devise_scope :member do
+  post 'public/guest_sign_in', to: 'public/sessions#guest_sign_in'
+end
 
 
 scope module: :public do

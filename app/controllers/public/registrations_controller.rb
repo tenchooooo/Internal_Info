@@ -60,9 +60,16 @@ class Public::RegistrationsController < Devise::RegistrationsController
   #   super(resource)
   # end
   before_action :configure_permitted_parameters, if: :devise_controller?
+  before_action :ensure_normal_member, only: :destroy
   
   def after_sign_in_path_for(resource)
     top_path
+  end
+  
+  def ensure_normal_member
+    if resource.email == 'guest@example.com'
+      redirect_to root_path, alert: 'ゲストユーザーは削除できません。'
+    end
   end
 
   protected
