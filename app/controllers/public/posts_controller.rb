@@ -67,12 +67,13 @@ class Public::PostsController < ApplicationController
     @tag_list = Tag.all # 投稿一覧表示ページでもすべてのタグを表示するために、タグを全聚徳
     @tag = Tag.find(params[:tag_id]) # クリックしたタグを取得
     @posts = @tag.posts.all # クリックしたタグに紐づけられた投稿をすべて表示
+  end
 
+  def post_search
     @section_title = "「#{params[:search]}」の検索結果"
-    @sposts = if params[:search].present?
+    @posts = if params[:search].present?
              Post.where(['text LIKE ? OR subject LIKE ?',
                         "%#{params[:search]}%", "%#{params[:search]}%"])
-                 .paginate(page: params[:page], per_page: 12).recent
            else
              Post.none
            end

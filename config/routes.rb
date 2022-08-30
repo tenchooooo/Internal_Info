@@ -22,7 +22,6 @@ get 'top' => 'public/homes#top'
 
 
 scope module: :public do
-  resources :posts
   resources :schedules
   # タグによって絞り込んだ投稿を表示するアクションへのルーティング
   resources :tags do
@@ -34,12 +33,10 @@ scope module: :public do
   end
 
   resources :posts do
+    collection {get "search", to: 'posts#post_search'}
     resource :checks, only: [:create, :destroy]
     resources :checks, only: [:index]
     resources :comments, only: [:create, :destroy]#commentsコントローラへのルーティング
-    collection do
-      get 'search'
-    end
   end
 end
 
