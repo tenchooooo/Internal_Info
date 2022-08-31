@@ -5,10 +5,10 @@ class Public::SessionsController < Devise::SessionsController
   def after_sign_in_path_for(resource)
     top_path
   end
-  def guest_sign_in
+  def new_guest
     member = Member.guest
     sign_in member
-    redirect_to top_path, notice: 'ゲストユーザーとしてログインしました。'
+    redirect_to  admin_members_path, notice: 'ゲストユーザーとしてログインしました。'
   end
   # GET /resource/sign_in
   # def new

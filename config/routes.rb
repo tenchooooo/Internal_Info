@@ -19,7 +19,7 @@ devise_for :admin, skip: [:registrations, :passwords] ,controllers: {
 root to: "homes#top"
 get 'top' => 'public/homes#top'
 devise_scope :member do
-  post 'public/guest_sign_in', to: 'public/sessions#guest_sign_in'
+  post 'public/guest_sign_in', to: 'public/sessions#new_guest'
 end
 
 
@@ -41,8 +41,9 @@ scope module: :public do
     resources :comments, only: [:create, :destroy]#commentsコントローラへのルーティング
   end
 end
-
-
-
   # For details on the DSL available within this file, see https://guides.rubyonrails.org/routing.html
+  namespace :admin do
+    resources :members, only: [:index, :show, :edit, :update]
+  end
 end
+

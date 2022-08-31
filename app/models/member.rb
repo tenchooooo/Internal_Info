@@ -10,11 +10,13 @@ class Member < ApplicationRecord
   has_many :schedules
   has_many :post_tags, dependent: :destroy
   has_many :tags, through: :post_tags
-  
-  
+
+
   def self.guest
     find_or_create_by!(email: 'guest@example.com') do |member|
       member.encrypted_password = SecureRandom.urlsafe_base64
+      member.password = SecureRandom.urlsafe_base64
+      member.password_confirmation = member.password
       member.last_name = "ゲスト"
       member.last_name_kana = "げすと"
       member.first_name = "様"
@@ -23,8 +25,7 @@ class Member < ApplicationRecord
       member.department = "来客"
       member.is_approval = true
       member.is_active = true
-      member.created_at = Time.now  # Confirmable を使用している場合は必要
-      member.updated_at = Time.now
+      # member.created_at = Time.now  # Confirmable を使用している場合は必要
       # 例えば name を入力必須としているならば， user.name = "ゲスト" なども必要
     end
   end
