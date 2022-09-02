@@ -8,12 +8,12 @@ class Public::SessionsController < Devise::SessionsController
   def new_guest
     member = Member.guest
     sign_in member
-    redirect_to  admin_members_path, notice: 'ゲストユーザーとしてログインしました。'
+    redirect_to top_path, notice: 'ゲストユーザーとしてログインしました。'
   end
   # GET /resource/sign_in
   # def new
   #   super
-  # end
+  # endS
 
   # POST /resource/sign_in
   # def create

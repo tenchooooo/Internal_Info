@@ -60,8 +60,8 @@ class Admin::RegistrationsController < Devise::RegistrationsController
   #   super(resource)
   # end
   before_action :configure_permitted_parameters, if: :devise_controller?
-  def after_sign_in_path_for(resource)
-    admin
+  def after_sign_out_path_for(resource)
+    new_admin_session_path
   end
   protected
 

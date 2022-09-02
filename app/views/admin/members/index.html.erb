@@ -1,1 +1,26 @@
-memberadmin
+<table>
+  <tr>
+    <th>氏名</th>
+    <th>カナ</th>
+    <th>部署</th>
+    <th>メールドレス</th>
+    <th>電話番号</th>
+    <th>承認</th>
+    <th>状態</th>
+  </tr>
+  <% @members.each do |member| %>
+  <tr>
+    <td><%= member.full_name %></td>
+    <td><%= member.full_name_kana %></td>
+    <td><%= member.department %></td>
+    <td><%= member.email %></td>
+    <td><%= member.telephone_number %></td>
+    <td><%= member.is_approval %></td>
+    <td><%= member.is_active %></td>
+  </tr>
+  <% end %>
+</table>
+
+
+
+
