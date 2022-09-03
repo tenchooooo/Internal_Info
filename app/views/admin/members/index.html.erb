@@ -1,4 +1,4 @@
-<table>
+<table class="table border">
   <tr>
     <th>氏名</th>
     <th>カナ</th>
@@ -10,7 +10,7 @@
   </tr>
   <% @members.each do |member| %>
   <tr>
-    <td><%= member.full_name %></td>
+    <td><%= link_to member.full_name, admin_member_path(member.id) %></td>
     <td><%= member.full_name_kana %></td>
     <td><%= member.department %></td>
     <td><%= member.email %></td>
