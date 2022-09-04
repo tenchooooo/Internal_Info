@@ -1,0 +1,11 @@
+<%= member.last_name %>さんのマイページ
+
+<table class="table">
+  <%= link_to "編集する", edit_admin_member_path(member.id)  %>
+  <tr><th>氏名</th><td><%= member.full_name %></td></tr>
+  <tr><th>カナ</th><td><%= member.full_name_kana %></td></tr>
+  <tr><th>メールドレス</th><td><%= member.email%></td></tr>
+  <tr><th>所属部署</th><td><%= member.department %></td></tr>
+</table>
+<%= link_to "#{member.last_name}さんの投稿一覧", member_posts_path(member.id) %>
+<%= link_to "#{member.last_name}さんの予定一覧", member_schedules_path(member.id) %>

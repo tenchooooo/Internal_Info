@@ -7,6 +7,8 @@
   <tr><th>メールドレス</th><td><%= @member.email%></td></tr>
   <tr><th>電話番号</th><td><%= @member.telephone_number %></td></tr>
   <tr><th>所属部署</th><td><%= @member.department %></td></tr>
+  <tr><th>承認</th><td><%= @member.is_approval %></td></tr>
+  <tr><th>状態</th><td><%= @member.is_active %></td></tr>
 </table>
 <%= link_to "#{@member.last_name}さんの投稿一覧", member_posts_path(@member.id) %>
 <%= link_to "#{@member.last_name}さんの予定一覧", member_schedules_path(@member.id) %>

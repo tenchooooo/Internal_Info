@@ -12,6 +12,10 @@
           <tr>
             <th><%= link_to date.day, schedule_path(date) %></th>
           </tr>
+            <td>
+              <%= "出張#{@trip}件" %>
+            </td>
+          </tr>
         </table>
       <% end %>
     </div>

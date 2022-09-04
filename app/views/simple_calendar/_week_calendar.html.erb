@@ -1,5 +1,4 @@
 <div class="simple-calendar">
-  <link rel="stylesheet" href="../style1.css" />
   <h3><%= t('date.month_names')[start_date.month] %></h3>
   <div class="calendar-heading">
     <%= link_to t('simple_calendar.previous', default: '前週'), calendar.url_for_previous_view %>
@@ -33,9 +32,6 @@
             <% end %>
           <% end %>
         </tr>
-        <td>
-          <!--ここに追加していく-->
-        </td>
       <% end %>
     </tbody>
   </table>

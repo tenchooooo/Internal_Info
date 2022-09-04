@@ -49,6 +49,28 @@
       </div>
       <div class="row">
         <tr>
+          <th><%= f.label "承認" %></th>
+          <td>
+            <%= f.radio_button :is_approval, false %>
+            <%= f.label :is_approval, '非承認', value: false %>
+            <%= f.radio_button :is_approval, true %>
+            <%= f.label :is_approval, '承認', value: true %>
+          </td>
+        </tr>
+      </div>
+      <div class="row">
+        <tr>
+          <th><%= f.label "会員ステータス" %></th>
+          <td>
+            <%= f.radio_button :is_active, false %>
+            <%= f.label :is_active, '無効', value: false %>
+            <%= f.radio_button :is_active, true %>
+            <%= f.label :is_active, '有効', value: true %>
+          </td>
+        </tr>
+      </div>
+      <div class="row">
+        <tr>
           <th></th>
           <td>
             <%= f.submit "編集する", class:'btn btn-success col-3' %>

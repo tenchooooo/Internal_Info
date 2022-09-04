@@ -1,6 +1,6 @@
 class Public::MembersController < ApplicationController
   def show
-    @member = current_member
+    @member = Member.find(params[:id])
   end
 
   def edit
