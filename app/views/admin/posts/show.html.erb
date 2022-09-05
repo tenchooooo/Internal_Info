@@ -1,0 +1,36 @@
+<div class="container">
+  タグ：
+  <%= @tags %>
+
+  <div class="row">
+    <div class="image col-6">
+      <%= image_tag @post.image, size: '420x594' %>
+      <p>閲覧期限：<%= @post.limit.to_s(:datetime_jp) %></p>
+    </div>
+    <div class="contents col-6">
+      <h2><span><%= @post.subject %></span></h2><br>
+      <p><span>内容：<%= @post.text %></span></p>
+      <p></p>
+
+      <%= link_to "編集", edit_post_path(@post), class:"btn btn-sm btn-success"%>
+      <%= button_to "削除", post_path(@post.id), method: :delete, "data-confirm" => "本当に削除しますか？", class:"btn btn-sm btn-danger" %>
+      <%= "確認数 : #{@post.checks.count}" %>
+
+
+      <!--コメント-->
+    </div>
+  </div>
+  <h5>コメント一覧 (コメント数：<%= @comments.count %>件)</h5>
+  <div class="row">
+    <% @comments.each do |comment| %>
+      <table class="table table-borderless">
+        <tr><th class="col-1">投稿者：</th><td class="col-11"><%= comment.post.member.department %> <%= comment.post.member.last_name %></td></tr>
+        <tr><th class="col-1">本　文：</th><td class="col-11"><%= comment.comment_content %></td></tr><!--コメントの内容が表示される-->
+        <tr><th class="col-1">投稿日：</th><td class="col-11"><%= comment.created_at.to_s(:datetime_jp) %></td></tr>
+        <tr><th></th><td><%= button_to "削除", post_comment_path(comment.post.id, comment.id), method: :delete, "data-confirm" => "本当に削除しますか？", class:"btn btn-sm btn-danger" %></td></tr>
+        --------------------------------------------------------------------------------------------------------------------
+      </table>
+    <% end %>
+  </div>
+
+</div>

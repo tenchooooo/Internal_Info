@@ -43,7 +43,13 @@ scope module: :public do
 end
   # For details on the DSL available within this file, see https://guides.rubyonrails.org/routing.html
   namespace :admin do
-    resources :members, only: [:index, :show, :edit, :update]
+    resources :members, only: [:index, :show, :edit, :update, :destroy] do
+      get 'posts', to: 'members#posts'
+    get 'schedules', to: 'members#schedules'
+    end
+    resources :posts, only: [:index, :show, :edit, :update, :destroy] do
+      collection {get "search", to: 'posts#post_search'}
+    end
   end
 end
 

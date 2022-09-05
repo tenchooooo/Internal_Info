@@ -9,15 +9,6 @@
   <% end %>
 </div>
 
-  <!--タグリスト-->
-  <%= "タグリスト："%>
-  <% @tag_list.each do |list|%>
-    <% if list.posts.where(browse_status: 0).count !=0 %>
-      <%=link_to list.tag_name,tag_posts_path(tag_id: list.id) %>
-      <%="(#{list.posts.where(browse_status: 0).count})" %>
-    <% end %>
-  <% end %>
-
   <% @posts.each do |post| %>
       <div class="card col-6" >
         <div class="row g-0">
@@ -42,4 +33,3 @@
       </div>
   <% end %>
 </div>
-
