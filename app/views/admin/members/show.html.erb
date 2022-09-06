@@ -11,4 +11,4 @@
   <tr><th>状態</th><td><%= @member.is_active %></td></tr>
 </table>
 <%= link_to "#{@member.last_name}さんの投稿一覧", admin_member_posts_path(@member.id) %>
-<%= link_to "#{@member.last_name}さんの予定一覧", schedules_path(@member.id) %>
+<%= link_to "#{@member.last_name}さんの予定一覧", admin_member_schedules_path(@member.id) %>

@@ -50,6 +50,7 @@ end
     resources :posts, only: [:index, :show, :edit, :update, :destroy] do
       collection {get "search", to: 'posts#post_search'}
     end
+    resources :schedules, only: [:index, :show, :edit, :update, :destroy]
   end
 end
 
