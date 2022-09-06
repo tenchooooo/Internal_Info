@@ -21,7 +21,7 @@ class Admin::MembersController < ApplicationController
   end
   def posts
     @posts = Post.all
-    @member = Member.find(params[:id])
+    @member = Member.find(params[:member_id])
     @tag_list = Tag.all
   end
 

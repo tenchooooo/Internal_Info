@@ -45,7 +45,7 @@ end
   namespace :admin do
     resources :members, only: [:index, :show, :edit, :update, :destroy] do
       get 'posts', to: 'members#posts'
-    get 'schedules', to: 'members#schedules'
+      get 'schedules', to: 'members#schedules'
     end
     resources :posts, only: [:index, :show, :edit, :update, :destroy] do
       collection {get "search", to: 'posts#post_search'}

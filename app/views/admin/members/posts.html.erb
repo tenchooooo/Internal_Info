@@ -2,7 +2,7 @@
   <h2><%= "#{@member.last_name}さんの投稿一覧" %></h2>
   <%= link_to "新規投稿", new_post_path %>
   <% @posts.each do |post| %>
-    <% if post.member.id == member.id %>
+    <% if post.member.id == @member.id %>
       <div class="card col-6" >
         <div class="row g-0">
           <div class="card-image col-md-4">
