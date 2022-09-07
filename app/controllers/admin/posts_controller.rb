@@ -10,6 +10,7 @@ class Admin::PostsController < ApplicationController
     @post = Post.find(params[:id])
     @tags = @post.tags.pluck(:tag_name).join(',')
     @comments = @post.comments  #投稿詳細に関連付けてあるコメントを全取得
+    @checks = @post.checks
   end
 
   def edit

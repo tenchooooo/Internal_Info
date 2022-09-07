@@ -51,6 +51,9 @@ end
       collection {get "search", to: 'posts#post_search'}
     end
     resources :schedules, only: [:index, :show, :edit, :update, :destroy]
+    resources :tags do
+      get 'posts', to: 'posts#search'
+    end
   end
 end
 
