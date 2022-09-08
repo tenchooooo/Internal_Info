@@ -16,7 +16,9 @@
       <%= button_to "削除", post_path(@post.id), method: :delete, "data-confirm" => "本当に削除しますか？", class:"btn btn-sm btn-danger" %>
       <%= "確認数 : #{@post.checks.count}" %>
       <% @checks.each do |check| %>
-        <%= check.member.last_name %>
+        <table>
+          <tr><td><%= check.member.department %>:<%= check.member.last_name %></td></tr>
+        </table>
       <% end %>
 
 

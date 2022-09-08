@@ -21,6 +21,7 @@
         <%= "確認数 : #{@post.checks.count}" %>
       <% end %>
       <% if @post.member == current_member %>
+        <%= link_to "確認者一覧", post_checks_path(@post) %>
         <%= link_to "編集", edit_post_path(@post), class:"btn btn-sm btn-success"%>
         <%= button_to "削除", post_path(@post.id), method: :delete, "data-confirm" => "本当に削除しますか？", class:"btn btn-sm btn-danger" %>
       <% end %>

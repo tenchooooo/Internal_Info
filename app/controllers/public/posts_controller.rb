@@ -74,11 +74,12 @@ class Public::PostsController < ApplicationController
     @posts = if params[:search].present?
              Post.where(['text LIKE ? OR subject LIKE ?',
                         "%#{params[:search]}%", "%#{params[:search]}%"])
+                 .paginate(page: params[:page], per_page: 12).recent
            else
              Post.none
            end
-
   end
+
 
 
 

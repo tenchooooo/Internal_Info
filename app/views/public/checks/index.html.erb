@@ -1,0 +1,16 @@
+      確認者一覧
+      <% @checks.each do |check| %>
+        <table>
+          <tr><td><%= @check_member_department %>:<%= @check_member_last_name %></td></tr>
+        </table>
+      <% end %>
+      
+      未確認者
+      <% @members.each do |member| %>
+        <% if member.id != @check_member_id %>
+          <table>
+            <tr><td><%= member.department %>:<%= member.last_name %></td></tr>
+          </table>
+        <% end %>
+      <% end %>
+
