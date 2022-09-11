@@ -40,6 +40,7 @@ scope module: :public do
     resources :checks, only: [:index]
     resources :comments, only: [:create, :destroy]#commentsコントローラへのルーティング
   end
+  resources :notifications, only: :index
 end
   # For details on the DSL available within this file, see https://guides.rubyonrails.org/routing.html
   namespace :admin do

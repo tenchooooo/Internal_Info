@@ -10,6 +10,8 @@ class Member < ApplicationRecord
   has_many :schedules
   has_many :post_tags, dependent: :destroy
   has_many :tags, through: :post_tags
+  has_many :active_notifications, class_name: 'Notification', foreign_key: 'visitor_id', dependent: :destroy
+  has_many :passive_notifications, class_name: 'Notification', foreign_key: 'visited_id', dependent: :destroy
 
 
   def self.guest

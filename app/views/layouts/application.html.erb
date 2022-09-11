@@ -25,7 +25,10 @@
           <% if member_signed_in? %>
           <li class="nav-item ml-5">
             <button type="button" class="btn btn-outline-primary btn-sm"> <%= link_to "top", top_path %> </button>
-          <li class="nav-itme">ようこそ、<%= current_member.last_name %>さん！</li>
+          <li class="nav-itme">ようこそ、<%= current_member.last_name %>さん！</li
+          <li class="nav-item ml-5">
+            <button type="button" class="btn btn-outline-primary btn-sm"> <%= link_to "通知", notifications_path %></button>
+          </li>
           <li class="nav-item ml-5">
             <button type="button" class="btn btn-outline-primary btn-sm"> <%= link_to "マイページ", member_path(current_member.id) %></button>
           </li>

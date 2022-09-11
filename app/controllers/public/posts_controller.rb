@@ -10,9 +10,12 @@ class Public::PostsController < ApplicationController
     # 受け取った値を" "で区切って配列にする。
     tag_list = params[:post][:tag_name].to_s.split(nil)
     if @post.save
+       @post.create_notification_post!(current_member)
        @post.save_tag(tag_list)
-       redirect_to post_path(@post.id), success: t('投稿完了しました')
+       flash[:success] = '投稿完了しました'
+       redirect_to post_path(@post.id)
     else
+      flash[:denger] = '投稿に失敗しました'
       render　:new
     end
   end

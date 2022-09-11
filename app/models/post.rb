@@ -5,6 +5,7 @@ class Post < ApplicationRecord
    belongs_to :member
    has_many :checks, dependent: :destroy
    has_many :comments, dependent: :destroy #Post.commentsで、投稿が所有するコメントを取得できる。
+   has_many :notifications, dependent: :destroy
 
 
 
@@ -30,5 +31,22 @@ class Post < ApplicationRecord
 
   def checked_by?(member) #メンバーIDがcheckテーブル内に存在するか判別する。
     checks.exists?(member_id: member.id)
+  end
+
+  def create_notification_post!(current_member)
+    # 全ユーザーを取得
+    temp_ids = Member.all.select(:id).distinct
+    temp_ids.each do |temp_id|
+      save_notification_post!(current_member, temp_id['id'])
+    end
+  end
+
+  def save_notification_post!(current_member, visited_id)
+    notification = current_member.active_notifications.new(
+        visited_id: visited_id,
+        post_id: id,
+        action: 'post'
+      )
+      notification.save if notification.valid?
   end
 end
