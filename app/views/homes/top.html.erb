@@ -1,15 +1,21 @@
 
 <div class="container">
   <div class="row">
-    <div class="col-6 offset-sm-3">
-      <p class="mt-5">ようこそ、「InternalInfo」へ！</p>
-      <p>このサイトは、社内情報共有のための掲示板です。</p>
-      <p>掲示物の確認、出欠勤の確認、出張情報の確認など</p>
-      <p>皆様の情報共有のお手伝いをさせていただきます。</p>
-      <%= link_to "管理者ログイン", new_admin_session_path, class:'ml-auto' %>
-      <%= link_to "新規登録", new_member_registration_path, class:'ml-auto' %>
-      <%= link_to "ログイン", new_member_session_path, class:'ml-auto' %>
-      <%= button_to 'ゲストログイン（閲覧用）', public_guest_sign_in_path, method: :post %>
+    <div class="col-12 text-center">
+      <h5 class="mt-5">ようこそ、「InternalInfo」へ！</h5>
+      <h5>このサイトは、社内情報共有のための掲示板です。</h5>
+      <h5>掲示物の確認、出欠勤の確認、出張情報の確認など</h5>
+      <h5>皆様の情報共有のお手伝いをさせていただきます。</h5>
+    </div>
+  </div>
+  <div class="row">
+    <div class="col-12 text-right">
+      <%= button_to "管理者ログイン", new_admin_session_path, class:' btn btn-link' %>
+    </div>
+    <div class="col-12 text-center ">
+      <%= button_to "新規登録", new_member_registration_path, class:'mb-3 auto btn btn-primary' %>
+      <%= button_to "ログイン", new_member_session_path, class:'mb-3 btn btn-success' %>
+      <%= button_to 'ゲストログイン（閲覧用）', public_guest_sign_in_path, method: :post, class: ' btn btn-info' %>
     </div>
   </div>
 </div>

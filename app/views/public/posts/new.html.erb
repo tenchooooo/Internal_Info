@@ -1,22 +1,21 @@
-<h3>新規投稿</h3>
-<%= form_with model: @post do |f| %>
-
-
-  <h4>添付画像</h4>
-  <%= f.file_field :image, accept: "image/*" %>
-
-  <h4>件名</h4>
-  <%= f.text_field :subject %>
-
-  <h4>内容</h4>
-  <%= f.text_area :text %>
-
-  <h4>タグ (半角スペースで区切ると複数タグ登録できます)</h4>
-  <%= f.text_field :tag_name %>
-
-  <h4>閲覧期限</h4>
-  <%= f.date_field :limit %>
-
-  <%= f.submit "投稿" %>
-<% end %>
+<div class="container">
+  <div class="row m-auto">
+    <div class="col-8">
+      <h3>新規投稿</h3>
+      <%= form_with model: @post do |f| %>
+        <h4>添付画像</h4>
+        <%= f.file_field :image, accept: "image/*" %>
+        <h4>件名</h4>
+        <%= f.text_field :subject %>
+        <h4>内容</h4>
+        <%= f.text_area :text %>
+        <h4>タグ (半角スペースで区切ると複数タグ登録できます)</h4>
+        <%= f.text_field :tag_name %>
+        <h4>閲覧期限</h4>
+        <%= f.date_field :limit %> <br>
+        <%= f.submit "投稿", class:"btn btn-success mt-2"%>
+      <% end %>
+    </div>
+  </div>
+</div>
 

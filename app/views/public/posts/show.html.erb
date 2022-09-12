@@ -2,7 +2,7 @@
   タグ：
   <%= @tags %>
 
-  <div class="row">
+  <div class="row m-auto">
     <div class="image col-6">
       <%= image_tag @post.image, size: '420x594' %>
       <p>閲覧期限：<%= @post.limit.to_s(:datetime_jp) %></p>
@@ -21,8 +21,8 @@
         <%= "確認数 : #{@post.checks.count}" %>
       <% end %>
       <% if @post.member == current_member %>
-        <%= link_to "確認者一覧", post_checks_path(@post) %>
-        <%= link_to "編集", edit_post_path(@post), class:"btn btn-sm btn-success"%>
+        <%= link_to "確認者一覧", post_checks_path(@post) %> <br>
+        <%= button_to "編集", edit_post_path(@post), class:"btn btn-sm btn-success"%>
         <%= button_to "削除", post_path(@post.id), method: :delete, "data-confirm" => "本当に削除しますか？", class:"btn btn-sm btn-danger" %>
       <% end %>
 
