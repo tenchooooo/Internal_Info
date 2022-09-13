@@ -1,16 +1,24 @@
-      確認者一覧
-      <% @checks.each do |check| %>
-        <table>
-          <tr><td><%= @check_member_department %>:<%= @check_member_last_name %></td></tr>
-        </table>
-      <% end %>
-      
-      未確認者
-      <% @members.each do |member| %>
-        <% if member.id != @check_member_id %>
-          <table>
-            <tr><td><%= member.department %>:<%= member.last_name %></td></tr>
-          </table>
-        <% end %>
-      <% end %>
+      <div class="container">
+        <div class="row mt-5">
+          <div class="col-6">
+            確認者一覧
+            <% @checks.each do |check| %>
+              <table class="table table border">
+                <tr><td><%= @check_member_department %>:<%= @check_member_last_name %></td></tr>
+              </table>
+            <% end %>
+          </div>
+          <div class="col-6">
+            未確認者
+            <% @members.each do |member| %>
+              <% if member.id != @check_member_id %>
+                <table class="table table border">
+                  <tr><td><%= member.department %>:<%= member.last_name %></td></tr>
+                </table>
+              <% end %>
+            <% end %>
+          </div>
+        </div>
+      </div>
+
 

@@ -4,7 +4,7 @@
   <% case notification.action %>
   <% when 'post' then %>
     <h6>【新規投稿】<%= link_to"#{notification.post.subject}", post_path(notification.post.id) %></h6>
-    <p><%= safe_join(notification.post.text.split("\n"), tag(:br)) %></p>
+    <p>内容：<%= safe_join(notification.post.text.split("\n"), tag(:br)) %></p>
   <% end %>
   <p class="n-time"><%= time_ago_in_words(notification.created_at).upcase %>前</p>
 </li>

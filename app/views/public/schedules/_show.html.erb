@@ -3,10 +3,6 @@
 <div class="card mb-5">
   <p>終日休み</p>
   <table class="table table border">
-    <tr>
-      <th>部署名</th>
-      <th>名前</th>
-    </tr>
   <% schedules.each do |schedule| %>
     <tr>
       <% if schedule.oneday_off? %>
@@ -21,10 +17,6 @@
 <div class="card mb-5">
   <p>午前休み</p>
   <table class="table table border">
-    <tr>
-      <th>部署名</th>
-      <th>名前</th>
-    </tr>
   <% schedules.each do |schedule| %>
     <tr>
       <% if schedule.morning_off? %>
@@ -39,10 +31,6 @@
 <div class="card mb-5">
   <p>午後休み</p>
   <table class="table table border">
-    <tr>
-      <th>部署名</th>
-      <th>名前</th>
-    </tr>
     <% schedules.each do |schedule| %>
     <tr>
       <% if schedule.afternoon_off? %>
@@ -59,11 +47,6 @@
 <div class="card mb-5">
   <p>出張情報</p>
   <table class="table table border">
-    <tr>
-      <th>部署名</th>
-      <th>名前</th>
-      <th>行先</th>
-    </tr>
     <% schedules.each do |schedule| %>
     <tr>
       <% if schedule.trip? %>
@@ -80,11 +63,6 @@
 <div class="card mb-5">
   <p>外出情報</p>
   <table class="table table border">
-    <tr>
-      <th>部署名</th>
-      <th>名前</th>
-      <th>行先</th>
-    </tr>
     <% schedules.each do |schedule| %>
     <tr>
       <% if schedule.go_out? %>
@@ -101,11 +79,6 @@
 <div class="card mb-5">
   <p>その他情報</p>
   <table class="table table border">
-    <tr>
-      <th>部署名</th>
-      <th>名前</th>
-      <th>内容</th>
-    </tr>
     <% @schedules.each do |schedule| %>
     <tr>
       <% if schedule.other? %>

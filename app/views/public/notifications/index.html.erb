@@ -1,12 +1,20 @@
-<h1>通知一覧</h1>
-<div class="common-contents">
-  <div class="posts">
-    <% if @notifications.exists? %>
-    <ul class="allnotifications-list">
-      <%= render @notifications %>
-    </ul>
-    <% else %>
-    <p class="allnotifications-no">通知はありません</p>
-    <% end %>
+<div class="container">
+  <div class="row">
+    <div class="col-10">
+      <h3>通知一覧</h3>      
+      <div class="card">
+        <div class="common-contents">
+          <div class="posts">
+            <% if @notifications.exists? %>
+              <ul class="allnotifications-list">
+                <%= render @notifications %>
+              </ul>
+            <% else %>
+              <p class="allnotifications-no">通知はありません</p>
+            <% end %>
+          </div>
+        </div>
+      </div>
+    </div>
   </div>
 </div>
