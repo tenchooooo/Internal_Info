@@ -1,25 +1,32 @@
-<table class="table border">
-  <tr>
-    <th>氏名</th>
-    <th>カナ</th>
-    <th>部署</th>
-    <th>メールドレス</th>
-    <th>電話番号</th>
-    <th>承認</th>
-    <th>状態</th>
-  </tr>
-  <% @members.each do |member| %>
-  <tr>
-    <td><%= link_to member.full_name, admin_member_path(member.id) %></td>
-    <td><%= member.full_name_kana %></td>
-    <td><%= member.department %></td>
-    <td><%= member.email %></td>
-    <td><%= member.telephone_number %></td>
-    <td><%= member.is_approval %></td>
-    <td><%= member.is_active %></td>
-  </tr>
-  <% end %>
-</table>
+<div class="container">
+  <h3>メンバー一覧</h3>
+  <div class="row m-auto">
+    <div class="col-12">
+      <table class="table border">
+        <tr>
+          <th>氏名</th>
+          <th>カナ</th>
+          <th>部署</th>
+          <th>メールドレス</th>
+          <th>電話番号</th>
+          <th>承認</th>
+          <th>状態</th>
+        </tr>
+        <% @members.each do |member| %>
+        <tr>
+          <td><%= link_to member.full_name, admin_member_path(member.id) %></td>
+          <td><%= member.full_name_kana %></td>
+          <td><%= member.department %></td>
+          <td><%= member.email %></td>
+          <td><%= member.telephone_number %></td>
+          <td><%= member.is_approval %></td>
+          <td><%= member.is_active %></td>
+        </tr>
+        <% end %>
+      </table>
+    </div>
+  </div>
+</div>
 
 
 

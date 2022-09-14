@@ -3,8 +3,8 @@
   <%= @tags %>
 
   <div class="row">
-    <div class="image col-6">
-      <%= image_tag @post.image, size: '420x594' %>
+    <div class="image-responsive">
+      <%= image_tag @post.image %>
       <p>閲覧期限：<%= @post.limit.to_s(:datetime_jp) %></p>
     </div>
     <div class="contents col-6">

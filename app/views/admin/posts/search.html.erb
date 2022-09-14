@@ -9,5 +9,27 @@
     <% end %>
   <% end %>
 
-<%= render 'public/posts/post_index', posts: @posts %>
+  <% @posts.each do |post| %>
+    <% if post.browse_status == "open" %>
+      <div class="card" >
+        <div class="row g-0">
+          <div class="card-image col-md-4">
+            <%= link_to admin_post_path(post.id) do %>
+              <%= image_tag post.image, size: '105x148' %>
+            <% end %>
+          </div>
+          <div class="card-text col-md-8 m-auto">
+            <p><%= "投稿日：#{post.created_at.to_s(:datetime_jp)}" %></p>
+            <p><%= "投稿者：#{post.member.department}  #{post.member.last_name}" %></p>
+            <p>件名：
+              <%= link_to admin_post_path(post.id) do %>
+                <% post.subject.truncate(25) %>
+              <% end %>
+            </p>
+            <p><%= "確認：#{post.checks.count}件" %> / <%= "コメント：#{post.comments.count}件" %></p>
+          </div>
+        </div>
+      </div>
+    <% end %>
+  <% end %>
 

@@ -13,9 +13,9 @@
       <%= button_to "管理者ログイン", new_admin_session_path, class:' btn btn-link' %>
     </div>
     <div class="col-12 text-center ">
-      <%= button_to "新規登録", new_member_registration_path, class:'mb-3 auto btn btn-primary' %>
+      <%= link_to "新規登録", new_member_registration_path, class:'mb-3 auto btn btn-primary' %>
       <%= button_to "ログイン", new_member_session_path, class:'mb-3 btn btn-success' %>
-      <%= button_to 'ゲストログイン（閲覧用）', public_guest_sign_in_path, method: :post, class: ' btn btn-info' %>
+      <%= button_to 'ゲストログイン（閲覧用）', public_guest_sign_in_path, method: :post, class: ' btn btn-secondary' %>
     </div>
   </div>
 </div>
