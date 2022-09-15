@@ -21,6 +21,9 @@ get 'top' => 'public/homes#top'
 devise_scope :member do
   post 'public/guest_sign_in', to: 'public/sessions#new_guest'
 end
+devise_scope :admin do
+  post 'admin/guest_sign_in', to: 'admin/sessions#new_guest'
+end
 
 
 scope module: :public do

@@ -1,4 +1,5 @@
 class Public::CommentsController < ApplicationController
+  before_action :authenticate_member!, except: [:top]
 
   def create
     @comment = current_member.comments.new(comment_params)

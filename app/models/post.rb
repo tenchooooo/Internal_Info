@@ -7,6 +7,10 @@ class Post < ApplicationRecord
    has_many :comments, dependent: :destroy #Post.commentsで、投稿が所有するコメントを取得できる。
    has_many :notifications, dependent: :destroy
 
+   validates :subject, presence: true
+   validates :text, presence: true
+   validates :limit, presence: true
+
 
 
    enum browse_status: { open: 0, closed: 1 }

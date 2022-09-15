@@ -1,4 +1,5 @@
 class Public::SchedulesController < ApplicationController
+  before_action :authenticate_member!, except: [:top]
 
   def new
     @schedule = Schedule.new
@@ -11,8 +12,11 @@ class Public::SchedulesController < ApplicationController
   def create
     @schedule = Schedule.new(schedule_params)
     @schedule.member_id = current_member.id
-    @schedule.save
-    redirect_to schedule_path(@schedule.day)
+    if @schedule.save
+      redirect_to schedule_path(@schedule.day)
+    else
+      render :new
+    end
   end
 
   def show

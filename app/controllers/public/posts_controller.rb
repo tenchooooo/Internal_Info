@@ -1,5 +1,5 @@
 class Public::PostsController < ApplicationController
-  before_action :authenticate_member!
+  before_action :authenticate_member!, except: [:top]
 
   def new
     @post = Post.new
@@ -16,7 +16,7 @@ class Public::PostsController < ApplicationController
        redirect_to post_path(@post.id)
     else
       flash[:denger] = '投稿に失敗しました'
-      render　:new
+      render :new
     end
   end
 

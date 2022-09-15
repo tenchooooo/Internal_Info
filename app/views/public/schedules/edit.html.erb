@@ -1,33 +1,35 @@
-<h3>予定編集</h3>
-<%= form_with model: @schedule, url: schedule_path, method: :patch do |f| %>
-
-  <h4>日付を選択</h4>
-  <%= f.date_field :day %> <br>
-
-  <%= f.radio_button :select_schedule, 1,  checked: "checked" %>
-  <%= f.label :schedule, "出欠勤情報" %> <br>
-    <%= f.radio_button :attendance, Schedule.attendances.key(0) %>
-    <%= f.label :attendance, Schedule.attendances_i18n[:oneday_off] %>
-    <%= f.radio_button :attendance, Schedule.attendances.key(1) %>
-    <%= f.label :attendance, Schedule.attendances_i18n[:morning_off] %>
-    <%= f.radio_button :attendance, Schedule.attendances.key(2) %>
-    <%= f.label :attendance, Schedule.attendances_i18n[:afternoon_off] %>
-    <%= f.radio_button :attendance, Schedule.attendances.key(3) %>
-    <%= f.label :attendance, Schedule.attendances_i18n[:leaving_early] %> <br>
-
-  <%= f.radio_button :select_schedule, 2 %>
-  <%= f.label :schedule, "出張情報" %> <br>
-    <%= f.radio_button :schedule, :trip %>
-    <%= f.label :trip, "出張"%>
-    <tr><th>行先</th><td><%= f.text_field :trip %></td></tr><br>
-    <%= f.radio_button :schedule, :go_out %>
-    <%= f.label :go_out, "外出" %>
-    <tr><th>行先</th><td><%= f.text_field :go_out %></td></tr><br>
-
-  <%= f.radio_button :select_schedule, 3 %>
-  <span class="js-check"><%= f.label :schedule, "その他予定" %></span> <br>
-  <%= f.text_field :other %>
-  <%= f.hidden_field :member_id, :value=> current_member.id %>
-  <%= f.submit "変更" %>
-
-<% end %>
+<div class="container">
+  <div class="row m-auto">
+    <div class="col-8">
+      <h3>予定編集</h3>
+      <%= form_with model: @schedule, url: schedule_path, method: :patch do |f| %>
+      <h4 class="mt-3">日付を選択</h4>
+        <%= f.date_field :day %> <br>
+        <%= f.radio_button :select_schedule, 1,  checked: "checked" %>
+        <%= f.label :schedule, "出欠勤情報", class:"mt-5" %> <br>
+          <%= f.radio_button :attendance, Schedule.attendances.key(0) %>
+          <%= f.label :attendance, Schedule.attendances_i18n[:oneday_off] %>
+          <%= f.radio_button :attendance, Schedule.attendances.key(1) %>
+          <%= f.label :attendance, Schedule.attendances_i18n[:morning_off] %>
+        <%= f.radio_button :attendance, Schedule.attendances.key(2) %>
+          <%= f.label :attendance, Schedule.attendances_i18n[:afternoon_off] %>
+          <%= f.radio_button :attendance, Schedule.attendances.key(3) %>
+          <%= f.label :attendance, Schedule.attendances_i18n[:leaving_early] %> <br>
+        <%= f.radio_button :select_schedule, 2 %>
+        <%= f.label :schedule, "出張情報", class:"mt-5" %> <br>
+          <%= f.radio_button :schedule, :trip, class:"ml-5" %>
+          <%= f.label :trip, "出張"%>
+          <tr><th>行先</th><td><%= f.text_field :trip, class:"ml-2" %></td></tr><br>
+          <%= f.radio_button :schedule, :go_out, class:"ml-5" %>
+          <%= f.label :go_out, "外出" %>
+          <tr><th>行先</th><td><%= f.text_field :go_out, class:"ml-2" %></td></tr><br>
+        <%= f.radio_button :select_schedule, 3 %>
+        <span class="js-check"><%= f.label :schedule, "その他予定", class:"mt-5" %></span> <br>
+        <%= f.text_field :other, class:"ml-5" %>
+        <%= f.hidden_field :member_id, :value=> current_member.id %> <br>
+        <%= f.submit "保存", class:"btn btn-success mt-3" %>
+      <% end %>
+    </div>
+    </div>
+  </div>
+</div>

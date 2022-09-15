@@ -1,4 +1,5 @@
 class Public::ChecksController < ApplicationController
+  before_action :authenticate_member!, except: [:top]
 
   def create
     @post_check = Check.new(member_id: current_member.id, post_id: params[:post_id])
