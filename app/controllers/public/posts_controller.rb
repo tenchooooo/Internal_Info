@@ -18,10 +18,10 @@ class Public::PostsController < ApplicationController
     if @post.save
        @post.create_notification_post!(current_member)
        @post.save_tag(tag_list)
-       flash[:success] = '投稿完了しました'
+       flash[:notice] = '投稿完了しました'
        redirect_to post_path(@post.id)
     else
-      flash[:denger] = '投稿に失敗しました'
+      flash[:notice] = '投稿に失敗しました'
       render :new
     end
   end
@@ -60,7 +60,8 @@ class Public::PostsController < ApplicationController
         relation.delete
       end
       @post.save_tag(tags)
-      redirect_to post_path(@post.id), success: t('投稿完了しました。')
+      redirect_to post_path(@post.id)
+      flash[:notice] = "編集完了しました"
     else
       render :edit
     end
@@ -69,7 +70,8 @@ class Public::PostsController < ApplicationController
   def destroy
     post = Post.find(params[:id])
     post.destroy
-    redirect_to posts_path, success: t('削除しました')
+    redirect_to posts_path
+    flash[:notice] = "削除しました"
   end
 
   def search

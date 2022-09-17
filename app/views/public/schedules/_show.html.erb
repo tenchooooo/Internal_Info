@@ -42,6 +42,21 @@
   </table>
 </div>
 
+<div class="card mb-5">
+  <p>早退</p>
+  <table class="table table border">
+    <% schedules.each do |schedule| %>
+    <tr>
+      <% if schedule.leaving_early? %>
+      <td><%= schedule.member.department %></td>
+      <td><%= schedule.member.last_name %></td>
+      <% end %>
+    </tr>
+    <% end %>
+  </table>
+</div>
+
+
 
 
 <div class="card mb-5">

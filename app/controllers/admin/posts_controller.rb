@@ -27,7 +27,8 @@ class Admin::PostsController < ApplicationController
         relation.delete
       end
       @post.save_tag(tags)
-      redirect_to post_path(@post.id), success: t('投稿完了しました。')
+      redirect_to post_path(@post.id)
+      flash[:alert] = "編集しました"
     else
       render :edit
     end
@@ -36,7 +37,8 @@ class Admin::PostsController < ApplicationController
   def destroy
     post = Post.find(params[:id])
     post.destroy
-    redirect_to posts_path, success: t('削除しました')
+    redirect_to admin_posts_path
+    flash[:alert] = "削除しました"
   end
 
   def search

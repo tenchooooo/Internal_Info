@@ -5,9 +5,9 @@
       <p>皆さんの予定が確認できます。</p>
     </div>
     <div class="col-12 mt-3">
-      <%= link_to "新規作成",   new_schedule_path %>
+
       <%= week_calendar events: @schedules do |date, schedules| %>
-        <%= link_to date.day, schedule_path(date) %>
+        <%= link_to date.day, admin_schedule_path(date) %>
       <% end %>
     </div>
     <!---->

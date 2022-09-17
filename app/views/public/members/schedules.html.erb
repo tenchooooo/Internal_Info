@@ -52,6 +52,22 @@
         </tr>
         <% end %>
       </table>
+      <p>早退</p>
+      <table class= "table table border mb-5">
+        <% @schedules.each do |schedule| %>
+        <tr>
+          <% if schedule.leaving_early? %>
+            <% if schedule.member_id == current_member.id %>
+              <td><%= schedule.day %></td>
+              <td><%= schedule.member.department %></td>
+              <td><%= schedule.member.last_name %></td>
+              <td><%= link_to "編集",  edit_schedule_path(schedule.id), class:"btn btn-success" %> </td>
+              <td><%= button_to "削除", schedule_path(schedule.id), method: :delete, class:"btn btn-danger" %></td>
+            <% end %>
+          <% end %>
+        </tr>
+        <% end %>
+      </table>
       <p>出張情報</p>
       <table class= "table table border mb-5">
         <% @schedules.each do |schedule| %>

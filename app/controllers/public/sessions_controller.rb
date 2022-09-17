@@ -10,6 +10,8 @@ class Public::SessionsController < Devise::SessionsController
     sign_in member
     redirect_to top_path, notice: 'ゲストユーザーとしてログインしました。'
   end
+
+
   # GET /resource/sign_in
   # def new
   #   super

@@ -1,4 +1,5 @@
 <div class="container">
+  <%= notice %>
   <div class="row">
     <div class="col-8">
       <h2>予定</h2>
@@ -12,8 +13,7 @@
               <td><%= schedule.day %></td>
               <td><%= schedule.member.department %></td>
               <td><%= schedule.member.last_name %></td>
-              <td><%= link_to "編集",  edit_schedule_path(schedule.id), class:"btn btn-success" %> </td>
-              <td><%= button_to "削除", schedule_path(schedule.id), method: :delete, class:"btn btn-danger" %></td>
+              <td><%= button_to "削除", admin_schedule_path(schedule.id), method: :delete, class:"btn btn-danger" %></td>
             <% end %>
           <% end %>
         </tr>
@@ -29,8 +29,7 @@
               <td><%= schedule.day %></td>
               <td><%= schedule.member.department %></td>
               <td><%= schedule.member.last_name %></td>
-              <td><%= link_to "編集",  edit_schedule_path(schedule.id), class:"btn btn-success" %> </td>
-              <td><%= button_to "削除", schedule_path(schedule.id), method: :delete, class:"btn btn-danger" %></td>
+              <td><%= button_to "削除", admin_schedule_path(schedule.id), method: :delete, class:"btn btn-danger" %></td>
             <% end %>
           <% end %>
         </tr>
@@ -45,8 +44,7 @@
               <td><%= schedule.day %></td>
               <td><%= schedule.member.department %></td>
               <td><%= schedule.member.last_name %></td>
-              <td><%= link_to "編集",  edit_schedule_path(schedule.id), class:"btn btn-success" %> </td>
-              <td><%= button_to "削除", schedule_path(schedule.id), method: :delete, class:"btn btn-danger" %></td>
+              <td><%= button_to "削除", admin_schedule_path(schedule.id), method: :delete, class:"btn btn-danger" %></td>
             <% end %>
           <% end %>
         </tr>
@@ -62,8 +60,7 @@
               <td><%= schedule.member.department %></td>
               <td><%= schedule.member.last_name %></td>
               <td><%= schedule.trip %></td>
-              <td><%= link_to "編集",  edit_schedule_path(schedule.id), class:"btn btn-success" %> </td>
-              <td><%= button_to "削除", schedule_path(schedule.id), method: :delete, class:"btn btn-danger" %></td>
+              <td><%= button_to "削除", admin_schedule_path(schedule.id), method: :delete, class:"btn btn-danger" %></td>
             <% end %>
           <% end %>
         </tr>
@@ -79,8 +76,7 @@
               <td><%= schedule.member.department %></td>
               <td><%= schedule.member.last_name %></td>
               <td><%= schedule.go_out %></td>
-              <td><%= link_to "編集",  edit_schedule_path(schedule.id), class:"btn btn-success" %> </td>
-              <td><%= button_to "削除", schedule_path(schedule.id), method: :delete, class:"btn btn-danger" %></td>
+              <td><%= button_to "削除", admin_schedule_path(schedule.id), method: :delete, class:"btn btn-danger" %></td>
             <% end %>
           <% end %>
         </tr>
@@ -96,8 +92,7 @@
               <td><%= schedule.member.department %></td>
               <td><%= schedule.member.last_name %></td>
               <td><%= schedule.other %></td>
-              <td><%= link_to "編集",  edit_schedule_path(schedule.id), class:"btn btn-success" %> </td>
-              <td><%= button_to "削除", schedule_path(schedule.id), method: :delete, class:"btn btn-danger" %></td>
+              <td><%= button_to "削除", admin_schedule_path(schedule.id), method: :delete, class:"btn btn-danger" %></td>
             <% end %>
             <% end %>
           </tr>

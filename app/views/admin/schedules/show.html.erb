@@ -1,0 +1,104 @@
+<div class="container">
+  <%= notice %>
+  <div class="row ml-auto">
+    <div class="col-8">
+      <h2>予定</h2>
+      <p>出欠勤情報</p>
+      <p>終日休み</p>
+      <table class= "table table border mb-5">
+        <% @schedules.each do |schedule| %>
+        <tr>
+          <% if schedule.oneday_off? %>
+            <td><%= schedule.day %></td>
+            <td><%= schedule.member.department %></td>
+            <td><%= schedule.member.last_name %></td>
+            <td><%= button_to "削除", admin_schedule_path(schedule.id), method: :delete, class:"btn btn-danger" %></td>
+          <% end %>
+        </tr>
+      <% end %>
+      </table>
+      <p>午前休み</p>
+      <table class= "table table border mb-5">
+        </tr>
+        <% @schedules.each do |schedule| %>
+        <tr>
+          <% if schedule.morning_off? %>
+            <td><%= schedule.day %></td>
+            <td><%= schedule.member.department %></td>
+            <td><%= schedule.member.last_name %></td>
+            <td><%= button_to "削除", admin_schedule_path(schedule.id), method: :delete, class:"btn btn-danger" %></td>
+          <% end %>
+        </tr>
+      <% end %>
+      </table>
+      <p>午後休み</p>
+      <table class= "table table border mb-5">
+        <% @schedules.each do |schedule| %>
+        <tr>
+          <% if schedule.afternoon_off? %>
+            <td><%= schedule.day %></td>
+            <td><%= schedule.member.department %></td>
+            <td><%= schedule.member.last_name %></td>
+            <td><%= button_to "削除", admin_schedule_path(schedule.id), method: :delete, class:"btn btn-danger" %></td>
+          <% end %>
+        </tr>
+        <% end %>
+      </table>
+      <p>早退</p>
+      <table class= "table table border mb-5">
+        <% @schedules.each do |schedule| %>
+        <tr>
+          <% if schedule.leaving_early? %>
+            <td><%= schedule.day %></td>
+            <td><%= schedule.member.department %></td>
+            <td><%= schedule.member.last_name %></td>
+            <td><%= button_to "削除", admin_schedule_path(schedule.id), method: :delete, class:"btn btn-danger" %></td>
+          <% end %>
+        </tr>
+        <% end %>
+      </table>
+      <p>出張情報</p>
+      <table class= "table table border mb-5">
+        <% @schedules.each do |schedule| %>
+        <tr>
+          <% if schedule.trip? %>
+            <td><%= schedule.day %></td>
+            <td><%= schedule.member.department %></td>
+            <td><%= schedule.member.last_name %></td>
+            <td><%= schedule.trip %></td>
+            <td><%= button_to "削除", admin_schedule_path(schedule.id), method: :delete, class:"btn btn-danger" %></td>
+          <% end %>
+        </tr>
+        <% end %>
+      </table>
+      <p>外出情報</p>
+      <table class= "table table border mb-5">
+        <% @schedules.each do |schedule| %>
+        <tr>
+          <% if schedule.go_out? %>
+            <td><%= schedule.day %></td>
+            <td><%= schedule.member.department %></td>
+            <td><%= schedule.member.last_name %></td>
+            <td><%= schedule.go_out %></td>
+            <td><%= button_to "削除", admin_schedule_path(schedule.id), method: :delete, class:"btn btn-danger" %></td>
+          <% end %>
+        </tr>
+        <% end %>
+      </table>
+      <p>その他情報</p>
+      <table class= "table table border mb-5">
+        <% @schedules.each do |schedule| %>
+        <tr>
+          <% if schedule.other? %>
+            <td><%= schedule.day %></td>
+            <td><%= schedule.member.department %></td>
+            <td><%= schedule.member.last_name %></td>
+            <td><%= schedule.other %></td>
+            <td><%= button_to "削除", admin_schedule_path(schedule.id), method: :delete, class:"btn btn-danger" %></td>
+          <% end %>
+          </tr>
+          <% end %>
+        </table>
+    </div>
+  </div>
+</div>
