@@ -1,7 +1,7 @@
 <div class="container">
   <div class="row m-auto">
     <div class="col-12">
-      <%= @member.last_name %>さんのマイページ
+      <%= @member.last_name %>さんの詳細ページ
       <table class="table">
         <%= link_to "編集する", edit_admin_member_path(@member.id)  %>
         <tr><th>氏名</th><td><%= @member.full_name %></td></tr>

@@ -28,6 +28,7 @@
 
       <!--コメント-->
       <p class="m-2">コメント投稿</p>
+      <%= alert %>
       <%= form_with(model:[@post, @comment], method: :post) do |f| %>
         <span><%= f.text_area :comment_content %></span>
         <%= f.hidden_field :post_id, value: @post.id %>

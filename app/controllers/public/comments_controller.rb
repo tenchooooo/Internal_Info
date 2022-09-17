@@ -1,34 +1,27 @@
 
-class Public::ChecksController < ApplicationController
+class Public::CommentsController < ApplicationController
   before_action :authenticate_member!, except: [:top]
-  before_action :member_is_approval
-  def member_is_approval
-    if current_member.is_approval == "false"
-      redirect_to  member_path(current_member.id)
-    end
-  end
 
   def create
-    @post_check = Check.new(member_id: current_member.id, post_id: params[:post_id])
-    @post_check.save
-    redirect_to post_path(params[:post_id])
+    @comment = current_member.comments.new(comment_params)
+    if @comment.save
+      redirect_back(fallback_location: root_path) #コメント送信後は、一つ前のページへリダイレクトさせる。
+    else
+      redirect_back(fallback_location: root_path)
+      flash[:alert] =  "コメントを入力してください."
+    end
   end
 
   def destroy
-    @post_check = Check.find_by(member_id: current_member.id, post_id: params[:post_id])
-    @post_check.destroy
-    redirect_to post_path(params[:post_id])
+    comment = Comment.find_by(id: params[:id], post_id: params[:post_id])
+    comment.destroy
+    redirect_back(fallback_location: root_path)
   end
 
-  def index
-    @members = Member.all
-    @post = Post.find(params[:post_id])
-    @checks = @post.checks
-    @checks.each do |check|
-      @check_member_id = check.member.id
-      @check_member_department = check.member.department
-      @check_member_last_name = check.member.last_name
-    end
-  end
+  private
 
+  def comment_params
+    params.require(:comment).permit(:comment_content, :post_id)
+    #formにてpost_idパラメータを送信して、コメントへpost_idを格納するようにする必要がある。
+  end
 end

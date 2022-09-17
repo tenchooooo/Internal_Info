@@ -13,8 +13,14 @@
         <h6>(半角スペースで区切ると複数タグ登録できます)</h6>
         <%= f.text_field :tag_name %>
         <h4>閲覧期限</h4>
-        <%= f.date_field :limit %> <br>
-        <%= f.submit "投稿", class:"btn btn-success mt-2" %>
+        <%= f.date_field :limit %>
+        <h4>公開</h4>
+        <%= f.radio_button :browse_status, "open", checked: "checked" %>
+        <%= f.label :browse_status, '公開', value: "open" %>
+        <%= f.radio_button :browse_status, "closed" %>
+        <%= f.label :browse_status, '非公開', value: "closed" %>
+        <br>
+        <%= f.submit "編集", class:"btn btn-success mt-2" %>
       <% end %>
     </div>
   </div>
