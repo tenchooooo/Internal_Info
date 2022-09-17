@@ -1,5 +1,11 @@
 class Public::ChecksController < ApplicationController
   before_action :authenticate_member!, except: [:top]
+  before_action :member_is_approval
+  def member_is_approval
+    if current_member.is_approval != "true"
+      redirect_to  member_path(current_member.id)
+    end
+  end
 
   def create
     @post_check = Check.new(member_id: current_member.id, post_id: params[:post_id])

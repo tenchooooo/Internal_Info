@@ -1,19 +1,20 @@
 <div class="container">
   <div class="row m-auto">
     <div class="col-10">
+      <p id="alert"><%= alert %></p>
       <h3><%= member.last_name %>さんのマイページ</h3>
       <table class="table">
         <% if member = current_member %>
-          <%= link_to "編集する", edit_admin_member_path(member.id), class:"btn btn-success mb-2"%>
+          <%= link_to "編集する", edit_member_path(member.id), class:"btn btn-success mb-2"%>
         <% end %>
         <tr><th>氏名</th><td><%= member.full_name %></td></tr>
         <tr><th>カナ</th><td><%= member.full_name_kana %></td></tr>
         <tr><th>メールドレス</th><td><%= member.email%></td></tr>
         <tr><th>所属部署</th><td><%= member.department %></td></tr>
+        <tr><th>運営承認<td><%= member.is_approval %></td></th></tr>
       </table>
       <%= link_to "#{member.last_name}さんの投稿一覧", member_posts_path(member.id), class:"btn btn-primary" %>
       <%= link_to "#{member.last_name}さんの予定一覧", member_schedules_path(member.id), class:"btn btn-secondary" %>
     </div>
   </div>
 </div>
-
