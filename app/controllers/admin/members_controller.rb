@@ -14,7 +14,10 @@ class Admin::MembersController < ApplicationController
   def update
     @member = Member.find(params[:id])
     if @member.update(member_params)
-      redirect_to admin_member_path(@member.id), success: t('投稿完了しました。')
+      if @member.is_active == false
+        @member.update(is_approval: false)
+      end
+      redirect_to admin_member_path(@member.id), success: t('編集完了しました。')
     else
       render :edit
     end

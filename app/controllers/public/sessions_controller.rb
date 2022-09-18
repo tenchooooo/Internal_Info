@@ -10,7 +10,22 @@ class Public::SessionsController < Devise::SessionsController
     sign_in member
     redirect_to top_path, notice: 'ゲストユーザーとしてログインしました。'
   end
+  before_action :reject_member, only: [:create]
 
+  protected
+
+  def reject_member
+    @member = Member.find_by(email: params[:member][:email])
+    return if !@member
+    # 「1」のアカウントが存在している場合、そのアカウントのパスワードとログイン画面で入力されたパスワードが 一致しているかを確認する
+    # Deviseが用意しているメソッド（ユーザー情報.valid_password?(入力されたパスワード)
+    if @member.valid_password?(params[:member][:password]) && (@member.is_active == false)
+      redirect_to new_member_registration_path
+      flash[:notice] = "退会済みユーザーです。"
+    else
+      flash[:notice] = "必須項目を入力してください。"
+    end
+  end
 
   # GET /resource/sign_in
   # def new
