@@ -18,9 +18,7 @@ class Public::ChecksController < ApplicationController
     @post = Post.find(params[:post_id])
     @checks = @post.checks
     @checks.each do |check|
-      @check_member_id = check.member.id
-      @check_member_department = check.member.department
-      @check_member_last_name = check.member.last_name
+      @member_id = check.member.id
     end
   end
 

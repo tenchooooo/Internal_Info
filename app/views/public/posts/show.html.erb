@@ -47,7 +47,7 @@
           <tr><th class="m-auto">投稿者：</th><td><%= comment.member.department %> <%= comment.member.last_name %></td></tr>
           <tr><th>本　文：</th><td><%= comment.comment_content %></td></tr><!--コメントの内容が表示される-->
           <tr><th>投稿日：</th><td><%= comment.created_at.to_s(:datetime_jp) %></td></tr>
-          <% if comment.post.member == current_member %>
+          <% if comment.member_id == current_member.id %>
             <tr><th></th><td><%= button_to "削除", post_comment_path(comment.post.id, comment.id), method: :delete, "data-confirm" => "本当に削除しますか？", class:"btn btn-sm btn-danger" %></td></tr>
           <% end %>
         </table>

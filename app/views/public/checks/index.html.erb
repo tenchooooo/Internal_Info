@@ -4,22 +4,12 @@
             確認者一覧
             <% @checks.each do |check| %>
               <table class="table table border">
-                <tr><td><%= @check_member_department %>:<%= @check_member_last_name %></td></tr>
+                <tr><td><%= check.member.department %>:<%= check.member.last_name %></td></tr>
               </table>
             <% end %>
-          </div>
-          <div class="col-6">
-            未確認者
-            <% @members.each do |member| %>
-              <% if member.id != @check_member_id %>
-                <table class="table table border">
-                  <tr><td><%= member.department %>:<%= member.last_name %></td></tr>
-                </table>
-              <% end %>
-            <% end %>
+            <%= link_to "戻る", :back %>
           </div>
         </div>
-        <%= link_to "戻る", :back %>
       </div>
 
 
