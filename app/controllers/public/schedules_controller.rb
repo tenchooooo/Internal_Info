@@ -13,7 +13,10 @@ class Public::SchedulesController < ApplicationController
   end
 
   def index
-    @schedules = Schedule.all.where("day >= ?", Date.current).where("day < ?", Date.current >> 3).order(day: :desc)
+   # @schedules = Schedule.all.where("day >= ?", Date.current).where("day < ?", Date.current >> 3).order(day: :desc)
+   @schedules = Schedule.all
+
+   
   end
 
   def create

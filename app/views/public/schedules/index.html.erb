@@ -1,14 +1,18 @@
 
 <div class="container">
   <div class="row">
-    <div class="col-12 text-center">
-      <h1>予定一覧</h1>
+    <div class="col-12">
+      <h3>一週間予定</h3>
       <p>皆さんの予定が確認できます。</p>
     </div>
     <div class="col-12 mt-3">
       <%= link_to "新規作成",   new_schedule_path %>
       <%= week_calendar events: @schedules do |date, schedules| %>
         <%= link_to date.day, schedule_path(date) %>
+       
+        <% schedules.each do |schedule| %>
+          <%= schedule.attendance %>
+        <% end %>
       <% end %>
     </div>
     <!---->
