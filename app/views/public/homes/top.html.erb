@@ -11,10 +11,11 @@
       <% end %>
     </div>
     <div class="col-6">
-      <h3 class="mt-5">本日の予定</h3><%= "(#{Date.today})" %>
+      <h3 class="mt-5">本日の予定</h3>
       <% if @schedules.exists? %>
         <%= render 'public/schedules/show', schedules: @schedules %>
       <% else %>
+        <%= "(#{Date.today})" %>
         <p>本日の予定はありません。</p>
       <% end %>
     </div>
