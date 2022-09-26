@@ -1,27 +1,35 @@
 <div class="container">
-  <%= notice %>
-  <h2>投稿一覧</h2>
-  <p>
-    <%= link_to "新規投稿", new_post_path %>
-  </p>
-<div class="post_search">
-  <%= form_with url: search_posts_path, method: :get, local: true do |f| %>
-    <%= f.text_field :search, class: 'form-control', placeholder: "キーワード検索"  %>
-    <%= f.button :type => "submit" do %>
-      <i>検索</i>
-    <% end %>
-  <% end %>
-</div>
-
+  <div class="row">
+    <div class="col-12">
+      <%= notice %>
+      <h2>投稿一覧</h2>
+      <p>
+        <%= link_to "新規投稿", new_post_path %>
+      </p>
+      <% if @posts.exists? %>
+      <div class="post_search">
+        <%= form_with url: search_posts_path, method: :get, local: true do |f| %>
+          <%= f.text_field :search, class: 'form-control', placeholder: "キーワード検索"  %>
+          <%= f.button :type => "submit" do %>
+            <i>検索</i>
+          <% end %>
+        <% end %>
+      </div>
   <!--タグリスト-->
-  <%= "タグリスト："%>
-  <% @tag_list.each do |list|%>
-    <% if list.posts.where(browse_status: 0).count !=0 %>
-      <%=link_to list.tag_name,tag_posts_path(tag_id: list.id) %>
-      <%="(#{list.posts.where(browse_status: 0).count})" %>
-    <% end %>
-  <% end %>
+      <%= "タグリスト："%>
+      <% @tag_list.each do |list|%>
+        <% if list.posts.where(browse_status: 0).count !=0 %>
+          <%=link_to list.tag_name,tag_posts_path(tag_id: list.id) %>
+          <%="(#{list.posts.where(browse_status: 0).count})" %>
+        <% end %>
+      <% end %>
 
-<%= render 'post_index', posts: @posts %>
+        <%= render 'post_index', posts: @posts %>
+      <% else %>
+        <p class="">投稿はありません。</p>
+      <% end %>
+    </div>
+  </div>
+
 </div>
 

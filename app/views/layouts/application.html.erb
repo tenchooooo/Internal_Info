@@ -27,6 +27,7 @@
             <button type="button" class="btn btn primary btn-sm mr-auto"> <%= link_to "TOP", top_path %> </button>
         </ul>
         <ul class="navbar-nav ml-auto">
+          <li class="nav-itme mr-5"><%= Date.today %></li>
           <li class="nav-itme">ようこそ、<%= current_member.last_name %>さん！</li>
           <li class="nav-item ml-5">
             <button type="button" class="btn btn-outline-info btn-sm"> <%= link_to "通知", notifications_path %></button>

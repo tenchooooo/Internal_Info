@@ -1,7 +1,13 @@
 <div class="container">
   <div class="row">
     <div class="col-8 m-auto">
-      <%= render 'show', schedules: @schedules %>
+      <h4><%= @day %></h4>
+      <% if @schedules.exists? %>
+        <%= render 'show', schedules: @schedules %>
+      <% else %>
+        <p>予定はありません。</p>
+      <% end %>
+      <%= link_to "戻る", :back %>
     </div>
   </div>
 </div>

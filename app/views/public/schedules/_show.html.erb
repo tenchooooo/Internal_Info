@@ -1,107 +1,143 @@
-
-<h4><%= @day %></h4>
-<div class="card mb-5">
-  <p>終日休み</p>
-  <table class="table table border">
-  <% schedules.each do |schedule| %>
-    <tr>
-      <% if schedule.oneday_off? %>
-      <td><%= schedule.member.department %></td>
-      <td><%= schedule.member.last_name %></td>
+<div class="container">
+  <div class="row">
+    <div class="col-12">
+      <% if grouping_attendance(schedules, "oneday_off") != 0 %>
+        <div class="card mb-5">
+          <p>終日休み</p>
+          <table class="table table border">
+            <% schedules.each do |schedule| %>
+            <tr>
+            <% if schedule.oneday_off? %>
+              <td><%= schedule.member.department %></td>
+              <td><%= schedule.member.last_name %></td>
+            <% end %>
+          </tr>
+        <% end %>
+        </table>
       <% end %>
-    </tr>
-  <% end %>
-  </table>
-</div>
-
-<div class="card mb-5">
-  <p>午前休み</p>
-  <table class="table table border">
-  <% schedules.each do |schedule| %>
-    <tr>
-      <% if schedule.morning_off? %>
-      <td><%= schedule.member.department %></td>
-      <td><%= schedule.member.last_name %></td>
+      </div>
+    </div>
+    <div class="col-12">
+      <% if grouping_attendance(schedules, "morning_off") != 0 %>
+      <div class="card mb-5">
+        <p>午前休み</p>
+        <table class="table table border">
+        <% schedules.each do |schedule| %>
+          <tr>
+            <% if schedule.morning_off? %>
+              <td><%= schedule.member.department %></td>
+              <td><%= schedule.member.last_name %></td>
+            <% end %>
+          </tr>
+        <% end %>
+        </table>
+      </div>
       <% end %>
-    </tr>
-  <% end %>
-  </table>
-</div>
-
-<div class="card mb-5">
-  <p>午後休み</p>
-  <table class="table table border">
-    <% schedules.each do |schedule| %>
-    <tr>
-      <% if schedule.afternoon_off? %>
-      <td><%= schedule.member.department %></td>
-      <td><%= schedule.member.last_name %></td>
+    </div>
+    <div class="col-12">
+      <% if grouping_attendance(schedules, "afternoon_off") != 0 %>
+      <div class="card mb-5">
+        <p>午後休み</p>
+        <table class="table table border">
+          <% schedules.each do |schedule| %>
+          <tr>
+            <% if schedule.afternoon_off? %>
+              <td><%= schedule.member.department %></td>
+              <td><%= schedule.member.last_name %></td>
+            <% end %>
+          </tr>
+          <% end %>
+        </table>
+      </div>
       <% end %>
-    </tr>
+    </div>
+    <div class="col-12">
+      <% if grouping_attendance(schedules, "leaving_early") != 0 %>
+      <div class="card mb-5">
+        <p>早退</p>
+        <table class="table table border">
+          <% schedules.each do |schedule| %>
+          <tr>
+            <% if schedule.leaving_early? %>
+              <td><%= schedule.member.department %></td>
+              <td><%= schedule.member.last_name %></td>
+            <% end %>
+          </tr>
+          <% end %>
+        </table>
+      </div>
+      <% end %>
+    </div>
+    <div class="col-12">
+      <% if grouping_trip(schedules) != 0 %>
+      <div class="card mb-5">
+      <p>出張情報</p>
+      <table class="table table border">
+        <% schedules.each do |schedule| %>
+          <tr>
+          <% if schedule.trip? %>
+            <td><%= schedule.member.department %></td>
+            <td><%= schedule.member.last_name %></td>
+            <td><%= schedule.trip %></td>
+          <% end %>
+          </tr>
+          <% end %>
+        </table>
+      </div>
+      <% end %>
+    </div>
+    <div class="col-12">
+      <% if grouping_go_out(schedules) != 0 %>
+      <div class="card mb-5">
+        <p>外出情報</p>
+        <table class="table table border">
+          <% schedules.each do |schedule| %>
+          <tr>
+            <% if schedule.go_out? %>
+              <td><%= schedule.member.department %></td>
+              <td><%= schedule.member.last_name %></td>
+              <td><%= schedule.go_out %></td>
+            <% end %>
+          </tr>
+          <% end %>
+        </table>
+      </div>
+      <% end %>
+    </div>
+    <div class="col-12">
+      <% if grouping_other(schedules) != 0 %>
+      <div class="card mb-5">
+        <p>その他情報</p>
+        <table class="table table border">
+          <% @schedules.each do |schedule| %>
+          <tr>
+            <% if schedule.other? %>
+              <td><%= schedule.member.department %></td>
+              <td><%= schedule.member.last_name %></td>
+              <td><%= schedule.other %></td>
+            <% end %>
+          </tr>
+          <% end %>
+        </table>
+      </div>
+    </div>
     <% end %>
-  </table>
-</div>
-
-<div class="card mb-5">
-  <p>早退</p>
-  <table class="table table border">
-    <% schedules.each do |schedule| %>
-    <tr>
-      <% if schedule.leaving_early? %>
-      <td><%= schedule.member.department %></td>
-      <td><%= schedule.member.last_name %></td>
-      <% end %>
-    </tr>
-    <% end %>
-  </table>
+  </div>
 </div>
 
 
 
 
-<div class="card mb-5">
-  <p>出張情報</p>
-  <table class="table table border">
-    <% schedules.each do |schedule| %>
-    <tr>
-      <% if schedule.trip? %>
-      <td><%= schedule.member.department %></td>
-      <td><%= schedule.member.last_name %></td>
-      <td><%= schedule.trip %></td>
-      <% end %>
-    </tr>
-  <% end %>
-  </table>
-</div>
 
 
-<div class="card mb-5">
-  <p>外出情報</p>
-  <table class="table table border">
-    <% schedules.each do |schedule| %>
-    <tr>
-      <% if schedule.go_out? %>
-      <td><%= schedule.member.department %></td>
-      <td><%= schedule.member.last_name %></td>
-      <td><%= schedule.go_out %></td>
-      <% end %>
-    </tr>
-    <% end %>
-  </table>
-</div>
 
 
-<div class="card mb-5">
-  <p>その他情報</p>
-  <table class="table table border">
-    <% @schedules.each do |schedule| %>
-    <tr>
-      <% if schedule.other? %>
-      <td><%= schedule.member.department %></td>
-      <td><%= schedule.member.last_name %></td>
-      <td><%= schedule.other %></td>
-      <% end %>
-    </tr>
-    <% end %>
-  </table>
-</div>
+
+
+
+
+
+
+
+
+
