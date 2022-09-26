@@ -39,7 +39,7 @@ class Public::SchedulesController < ApplicationController
   def show
     @schedules = Schedule.where(day: params[:id])
     @schedules.each do |schedule|
-      @day = params[:fomat]
+      @day = schedule.day
     end
   end
 
