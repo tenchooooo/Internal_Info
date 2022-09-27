@@ -45,6 +45,10 @@ class Public::SchedulesController < ApplicationController
 
   def edit
     @schedule = Schedule.find(params[:id])
+    @member = @schedule.member
+    if @member != current_member
+      redirect_to schedules_path
+    end
   end
 
   def update
