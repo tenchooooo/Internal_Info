@@ -37,10 +37,8 @@ class Public::SchedulesController < ApplicationController
   end
 
   def show
+    @day = params[:id]
     @schedules = Schedule.where(day: params[:id])
-    @schedules.each do |schedule|
-      @day = schedule.day
-    end
   end
 
   def edit
