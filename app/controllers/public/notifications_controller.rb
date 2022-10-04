@@ -15,5 +15,6 @@ class Public::NotificationsController < ApplicationController
       notification.update(checked: true)
       @notification = notification.checked
     end
+    @notifications_page = Notification.all.page(params[:page]).per(10)
   end
 end

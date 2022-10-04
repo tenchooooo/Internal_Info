@@ -27,7 +27,7 @@ class Public::PostsController < ApplicationController
   end
 
   def index
-    @posts = Post.all
+    @posts = Post.all.page(params[:page]).per(5)
     @posts.each do |post|
       if post.limit.to_s(:datetime_jp) < DateTime.now.to_s(:datetime_jp)
         post.update(browse_status:1)
@@ -36,7 +36,6 @@ class Public::PostsController < ApplicationController
 
     @tag_list = Tag.all
     @post = current_member.posts.new
-
   end
 
   def show
