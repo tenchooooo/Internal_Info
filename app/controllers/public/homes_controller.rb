@@ -9,7 +9,7 @@ class Public::HomesController < ApplicationController
   end
 
   def top
-    @posts = Post.all.page(params[:page]).per(5)
+    @posts = Post.all.order(created_at: :desc).page(params[:page]).per(5)
     @posts.each do |post|
       if post.limit.to_s(:datetime_jp) < DateTime.now.to_s(:datetime_jp)
         post.update(browse_status:1)

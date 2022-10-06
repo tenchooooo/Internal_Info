@@ -27,7 +27,7 @@ class Public::PostsController < ApplicationController
   end
 
   def index
-    @posts = Post.all.page(params[:page]).per(5)
+    @posts = Post.all.order(created_at: :desc).page(params[:page]).per(5)
     @posts.each do |post|
       if post.limit.to_s(:datetime_jp) < DateTime.now.to_s(:datetime_jp)
         post.update(browse_status:1)
@@ -80,14 +80,14 @@ class Public::PostsController < ApplicationController
   def search
     @tag_list = Tag.all # 投稿一覧表示ページでもすべてのタグを表示するために、タグを全聚徳
     @tag = Tag.find(params[:tag_id]) # クリックしたタグを取得
-    @posts = @tag.posts.all # クリックしたタグに紐づけられた投稿をすべて表示
+    @posts = @tag.posts.all.order(created_at: :desc).page(params[:page]).per(5) # クリックしたタグに紐づけられた投稿をすべて表示
   end
 
   def post_search
     @section_title = "「#{params[:search]}」の検索結果"
     @posts = if params[:search].present?
              Post.where(['text LIKE ? OR subject LIKE ?',
-                        "%#{params[:search]}%", "%#{params[:search]}%"])
+                        "%#{params[:search]}%", "%#{params[:search]}%"]).order(created_at: :desc).page(params[:page]).per(5)
            else
              Post.none
            end
