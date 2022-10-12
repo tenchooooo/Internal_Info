@@ -11,7 +11,7 @@
         <tr><th>カナ</th><td><%= member.full_name_kana %></td></tr>
         <tr><th>メールドレス</th><td><%= member.email%></td></tr>
         <tr><th>所属部署</th><td><%= member.department %></td></tr>
-        <tr><th>運営承認<td><%= member.is_approval %></td></th></tr>
+        <tr><th>運営承認<td><%= member.is_approval ? '承認済み':'未承認' %></td></th></tr>
       </table>
       <%= link_to "#{member.last_name}さんの投稿一覧", member_posts_path(member.id), class:"btn btn-primary" %>
       <%= link_to "#{member.last_name}さんの予定一覧", member_schedules_path(member.id), class:"btn btn-secondary" %>
