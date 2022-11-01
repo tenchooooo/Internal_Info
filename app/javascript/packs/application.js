@@ -17,5 +17,4 @@ Rails.start()
 Turbolinks.start()
 ActiveStorage.start()
 
-let hello ='Hello World';
-alert(hello);
+var str = "webcamp"
