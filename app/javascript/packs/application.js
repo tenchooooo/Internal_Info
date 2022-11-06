@@ -11,8 +11,8 @@ import "channels"
 import "jquery";
 import "popper.js";
 import "bootstrap";
-import "stylesheets/application"
-import "stylesheets/calendar.scss"
+import "../stylesheets/application"
+import "../stylesheets/calendar"
 
 Rails.start()
 Turbolinks.start()
