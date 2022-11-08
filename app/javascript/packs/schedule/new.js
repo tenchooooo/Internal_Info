@@ -1,12 +1,13 @@
-// メイン部分
-let alertString;
-alertString = addString("WebCamp");
+// 複数の関数で表示できるようにする。
+// 入力ダイアログで値を入力する。
 
-// 作成した関数を呼び出す
-alert(alertString);
+let promptStr = prompt('何か好きな文字を入力してください。');
 
-// 作成した関数
-function addString(strA) {
-  let addStr = "Hello" + strA;
-  return addStr;
-}
+alert(promptStr);
+
+// 今回は入力もできるように設定していきます。
+// ブラウザ上で文字を入力数場合、通常はフォームが使われます。
+// 今回は、入力ダイアログに入力して実行してみます。
+
+// 起動し、好きな文字を入力してOKボタンをクリックすると、入力された文字列はprompt()関数の戻り値として、
+// 変数「promptStr」に格納され、アラートウィンドウ上に表示される。
