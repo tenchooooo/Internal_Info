@@ -17,5 +17,3 @@ import "../stylesheets/calendar"
 Rails.start()
 Turbolinks.start()
 ActiveStorage.start()
-
-alert("hello")
