@@ -43,6 +43,35 @@ $(function(){
 
 // 下から上
 // （CSSのdisplay: noneを削除）
+// $(function() {
+    // $('.box1').slideUp();
+// });
+
+// 要素の表示、非表示
+// 非表示要素をjQueryで表示させる
+
+// （CSSでdisplay: none;を追記）
+// $(function() {
+    // $('.box1').show();
+    // $('.box1').css({'background-color': '#0000FF'});
+// });
+
+// 表示要素をjQueryで非表示に
+// (CSSでdisplay: none;を削除)
+// $(function() {
+  // $('.box1').hide();
+// });
+
+// 1.要素を上から下へスライドさせた後、赤色の正方形を青色の長方形（幅200px、高さ100px）に変更する。
+// 2.1のあと、設楽加上へスライドさせるようにする。
+
+// CSSでdisplay: none;を追加
 $(function() {
-    $('.box1').slideUp();
+  $('.box1').slideDown(function() {
+    $('.box1').css({
+      'background-color': '#0000FF',
+      'width': '200px',
+      'height': '100px'
+    }).slideUp();
+  });
 });
