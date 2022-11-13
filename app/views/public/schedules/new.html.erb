@@ -1,16 +1,23 @@
+<%= stylesheet_pack_tag 'schedule/style' %>
 <%= javascript_pack_tag 'schedule/new' %>
-<div class="container">
-  <div class="row m-auto">
-    <div class="col-8">
-      <h1>childrenサンプル</h1>
-      <button>クリック</button>
-      <h3>リスト</h3>
-      <ul>
-        <li>Home</li>
-        <li>Concept</li>
-        <li>Products</li>
-        <li>Access</li>
-      </ul>
+
+      <h1>9章【「トップへ戻る」ボタンを作ってみよう】</h1>
+      <div class="box"></div>
+      <div class="box"></div>
+      <div class="box"></div>
+      <div class="box"></div>
+      <div class="box"></div>
+      <div class="box"></div>
+      <div class="box"></div>
+      <div class="box"></div>
+
+      <span id="back">
+        <!--spanタグは、classでもいいが、idのほうが処理速度が若干早くなる。、また、classは複数に指定できてしまうため、ここでは、一位のidを使っている。-->
+        <a href="#">
+          <!--<a href="#">は、そのページの最上層へ移動するリンク-->
+          <%= image_tag 'arrow.png' ,class:"img"%>
+        </a>
+      </span>
       <h3>予定作成</h3>
       <p></p>
       <% if @schedule.errors.any? %>
@@ -48,6 +55,3 @@
         <%= f.hidden_field :member_id, :value=> current_member.id %> <br>
         <%= f.submit "保存", class:"btn btn-success mt-3" %>
       <% end %>
-    </div>
-  </div>
-</div>
