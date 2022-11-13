@@ -6,8 +6,12 @@
 	object-fit: cover;
 }
 .box1 {
-	display: none;
   background-color: #FF0000;
   height: 200px;
   width: 200px;
+}
+
+// マウスオーバー時に適用されCSS(class)
+.box1-ext {
+  border: 10px solid black;
 }
