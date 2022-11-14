@@ -1,0 +1,24 @@
+@charset "UTF-8";
+/*スタイルシートがHTMLとは分離したファイルに存在するばあいは文字コードを決定しなければならないというルールがあります。*/
+/*今回の場合はstyle.cssの一番上に@charset"UTF-8";とすることで明記しています。*/
+/*外部CSSの文字コードの指定では必ずCSSファイルの先頭に記述します。*/
+
+h1 {
+  text-align: center;
+  margin: 50px 0;
+  color: #FF0000;
+}
+.box {
+  height: 300px;
+  width: 600px;
+  margin: 0 auto 50px;
+  background-color: #eee;
+}
+#back {
+  position: fixed;
+  right: 20px;
+  bottom: 20px;
+}
+#back img {
+  width: 50px;
+}
