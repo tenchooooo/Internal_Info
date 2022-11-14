@@ -1,23 +1,36 @@
-<%= stylesheet_pack_tag 'schedule/style' %>
 <%= javascript_pack_tag 'schedule/new' %>
+<div class="container">
+  <div class="row m-auto">
+  <h1>10章【ハンバーガーメニューを作ってみよう】</h1>
+    <div id="sp-menu">
+      <h2>MENU</h2>
+      <ul>
+        <!--ハンバーガーメニューを表示するHTMLは以下の部分-->
+        <li><a href="#">MENU1</a></li>
+        <li><a href="#">MENU2</a></li>
+        <li><a href="#">MENU3</a></li>
+        <li><a href="#">MENU4</a></li>
+        <li><a href="#">MENU5</a></li>
+      </ul>
+    </div>
+    <div id="hm-icon">
+      <a class="menu-trigger"href="#">
+        <!--このアイコンをクリックしたときに、ハンバーガーメニューが表示される-->
+        <span></span>
+        <span></span>
+        <span></span>
+      </a>
+    </div>
 
-      <h1>9章【「トップへ戻る」ボタンを作ってみよう】</h1>
-      <div class="box"></div>
-      <div class="box"></div>
-      <div class="box"></div>
-      <div class="box"></div>
-      <div class="box"></div>
-      <div class="box"></div>
-      <div class="box"></div>
-      <div class="box"></div>
-
-      <span id="back">
-        <!--spanタグは、classでもいいが、idのほうが処理速度が若干早くなる。、また、classは複数に指定できてしまうため、ここでは、一位のidを使っている。-->
-        <a href="#">
-          <!--<a href="#">は、そのページの最上層へ移動するリンク-->
-          <%= image_tag 'arrow.png' ,class:"img"%>
-        </a>
-      </span>
+    <div class="box"></div>
+    <div class="box"></div>
+    <div class="box"></div>
+    <div class="box"></div>
+    <div class="box"></div>
+    <div class="box"></div>
+    <div class="box"></div>
+    <div class="box"></div>
+    <div class="col-8">
       <h3>予定作成</h3>
       <p></p>
       <% if @schedule.errors.any? %>
@@ -55,3 +68,6 @@
         <%= f.hidden_field :member_id, :value=> current_member.id %> <br>
         <%= f.submit "保存", class:"btn btn-success mt-3" %>
       <% end %>
+    </div>
+  </div>
+</div>
