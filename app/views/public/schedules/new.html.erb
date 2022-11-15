@@ -5,11 +5,14 @@
 
     <div class="wrap">
       <ul id="tab-menu">
-        <li><a href="#" class="active">TAB1</a></li>
-        <li><a href="#" class="">TAB2</a></li>
-        <li><a href="#" class="">TAB3</a></li>
-        <li><a href="#" class="">TAB4</a></li>
+        <li><a href="#tab1" class="active">TAB1</a></li>
+        <li><a href="#tab2" class="">TAB2</a></li>
+        <li><a href="#tab3" class="">TAB3</a></li>
+        <li><a href="#tab4" class="">TAB4</a></li>
       </ul>
+        <!--今回のタブメニュー(id="tab-menu")には、「TAB1」から「TAB4」まで、4つのタブがあります。-->
+        <!--タブ(a要素)をクリックすると、それぞれのコンテンツが表示されます。-->
+        <!--さらに、TAB1にはclass="active"をついかして、最初に表示したときにTAB1のないようが表示されるように設定しています。-->
 
       <div id="tab-contents">
         <div id="tab1" class="tab">
@@ -19,13 +22,16 @@
           <p>TAB2のテキストが入ります。TAB2テキストが入ります。</p>
         </div>
         <div id="tab3" class="tab">
-          <p>TAB2のテキストが入ります。TAB3テキストが入ります。TAB3テキストが入ります。</p>
+          <p>TAB3のテキストが入ります。TAB3テキストが入ります。TAB3テキストが入ります。</p>
         </div>
         <div id="tab4" class="tab">
-          <p>TAB2のテキストが入ります。TAB4テキストが入ります。TAB2のテキストが入ります。TAB4テキストが入ります。</p>
+          <p>TAB4のテキストが入ります。TAB4テキストが入ります。TAB4のテキストが入ります。TAB4テキストが入ります。</p>
         </div>
       </div>
+        <!--タブをクリックしたときの表示内容は、id="tab-contents"のdiv 要素内に記述されています。-->
     </div>
+
+
     <div class="col-8">
       <h3>予定作成</h3>
       <p></p>
