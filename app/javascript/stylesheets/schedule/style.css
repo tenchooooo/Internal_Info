@@ -1,7 +1,19 @@
 @charset "UTF-8";
 
 
-#box-contents {
-  display: flex;
-  flex-wrap: wrap;
+#displayBox .cm_box{
+  display: none;
+}
+
+#displayBox .cm_box .active {
+  display: block;
+}
+
+#tripBox .box{
+  display: none;
+  margin-left: 5px
+}
+
+#tripBox .box .active {
+  display: block;
 }

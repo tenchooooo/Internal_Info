@@ -16,10 +16,20 @@
         <h6 class="mt-3">日付を選択</h6>
         <%= f.date_field :day %> <br>
 
-        <%= f.radio_button :select_schedule, 1,  checked: "checked" %>
-        <%= f.label :schedule, "出欠勤情報", class:"mt-5" %> <br>
-        <div id="box-contents">
-          <div class="box" id="box1">
+        <div id="radioBtn">
+          <%= f.radio_button :select_schedule, 1 %>
+          <%= f.label :schedule, "出欠勤情報", class: "mt-5"%> <br>
+
+          <%= f.radio_button :select_schedule, 2 %>
+          <%= f.label :schedule, "出張情報" %> <br>
+
+          <%= f.radio_button :select_schedule, 3 %>
+          <%= f.label :schedule, "その他予定" %> <br>
+        </div>
+
+
+        <div id="displayBox" class="mt-5 pt-5 border-top">
+          <div class="cm_box">
             <%= f.radio_button :attendance, Schedule.attendances.key(0), class:"ml-5" %>
             <%= f.label :attendance, Schedule.attendances_i18n[:oneday_off] %>
             <%= f.radio_button :attendance, Schedule.attendances.key(1) %>
@@ -30,26 +40,26 @@
             <%= f.label :attendance, Schedule.attendances_i18n[:leaving_early] %> <br>
           </div>
         </div>
-
-
-        <%= f.radio_button :select_schedule, 2 %>
-        <%= f.label :schedule, "出張情報", class:"mt-5" %> <br>
-        <div id="box-contents">
-          <div class="box" id="box2">
-            <%= f.radio_button :schedule, :trip, class:"ml-5" %>
-            <%= f.label :trip, "出張"%>
-            <tr><th>行先</th><td><%= f.text_field :trip, class:"ml-2" %></td></tr><br>
-            <%= f.radio_button :schedule, :go_out, class:"ml-5" %>
-            <%= f.label :go_out, "外出" %>
-            <tr><th>行先</th><td><%= f.text_field :go_out, class:"ml-2" %></td></tr><br>
+        <div id="displayBox">
+          <div class="cm_box">
+            <div id="radioBtn2">
+              <%= f.radio_button :schedule, :trip, class:"ml-5" %>
+              <%= f.label :trip, "出張"%>
+              <%= f.radio_button :schedule, :go_out, class:"ml-5" %>
+              <%= f.label :go_out, "外出" %>
+            </div>
+            <div id="tripBox">
+              <div class="box active">
+                <tr><th>　　　行先</th><td><%= f.text_field :trip %></td></tr>
+              </div>
+              <div class="box">
+                <tr><th>　　　行先</th><td><%= f.text_field :go_out %></td></tr>
+              </div>
+            </div>
           </div>
         </div>
-
-
-        <%= f.radio_button :select_schedule, 3 %>
-        <span class="js-check"><%= f.label :schedule, "その他予定", class:"mt-5" %></span> <br>
-        <div id="box-contents">
-          <div class="box" id="box3">
+        <div id="displayBox">
+          <div class="cm_box">
             <%= f.text_field :other, class:"ml-5" %>
           </div>
         </div>

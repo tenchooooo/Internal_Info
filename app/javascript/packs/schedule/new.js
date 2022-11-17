@@ -1,17 +1,18 @@
 /*global $*/
 
-$('#box-contents .box[id != "box1"]').hide();
 $(function(){
-  $('[name=schedule[select_schedule]:radio').change( function(){
-    if($('[id="schedule_select_schedule_1"]').prop("checked")){
-      $('.box').fadeOut();
-      $('.box1').fadeIn();
-    } else if($('[id="schedule_select_schedule_2"]').prop("checked")){
-      $('.box').fadeOut();
-      $('.box2').fadeIn();
-    } else if($('[id="schedule_select_schedule_3"]').prop("checked")){
-      $('.box').fadeOut();
-      $('.box3').fadeIn();
-    }
-  });
+	$('#radioBtn input').on('click', function(){
+	  var index = $('#radioBtn input').index(this);
+	  $("#displayBox .cm_box").hide();
+		$("#displayBox .cm_box").removeClass("active");
+		$("#displayBox .cm_box").eq(index).addClass('active');
+		$('#displayBox .active').show();
+	});
+	$('#radioBtn2 input').on('click', function(){
+	  var index = $('#radioBtn2 input').index(this);
+	  $("#tripBox .box").hide();
+		$("#tripBox .box").removeClass("active");
+		$("#tripBox .box").eq(index).addClass('active');
+		$('#tripBox .active').show();
+	})
 });
