@@ -14,5 +14,7 @@ $(function(){
 		$("#tripBox .box").removeClass("active");
 		$("#tripBox .box").eq(index).addClass('active');
 		$('#tripBox .active').show();
-	})
+	});
 });
+
+// 内容書いた後のボタン変更時にテキストの中身をクリアしたい
