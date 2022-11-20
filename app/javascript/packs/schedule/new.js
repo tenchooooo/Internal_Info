@@ -6,6 +6,7 @@ $(function(){
 	  $("#displayBox .cm_box").hide();
 		$("#displayBox .cm_box").removeClass("active");
 		$("#displayBox .cm_box").eq(index).addClass('active');
+		// eq()は、複数のHTML要素の中からインデックス番号を指定することで特定の要素だけを取得する。
 		$('#displayBox .active').show();
 	});
 	$('#radioBtn2 input').on('click', function(){
