@@ -9,8 +9,8 @@ $(function(){
 		// eq()は、複数のHTML要素の中からインデックス番号を指定することで特定の要素だけを取得する。
 		$('#displayBox .active').show();
 	});
-	$('#radioBtn2 input').on('click', function(){
-	  var index = $('#radioBtn2 input').index(this);
+	$('#radioBtn3 input').on('click', function(){
+	  var index = $('#radioBtn3 input').index(this);
 	  $("#tripBox .box").hide();
 		$("#tripBox .box").removeClass("active");
 		$("#tripBox .box").eq(index).addClass('active');
