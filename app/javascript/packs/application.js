@@ -13,7 +13,7 @@ import "popper.js";
 import "bootstrap";
 import "../stylesheets/application"
 import "../stylesheets/calendar"
-import "../stylesheets/schedule/style"
+import "../stylesheets/schedule/new"
 
 Rails.start()
 Turbolinks.start()

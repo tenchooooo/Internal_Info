@@ -3,6 +3,7 @@ class Schedule < ApplicationRecord
   enum attendance: { oneday_off: 0, morning_off: 1, afternoon_off: 2, leaving_early: 3 }
 
   validates :day, presence: true
+  validates_with ScheduleValidator
 
   def self.schedules_after_three_month
     # 今日から３カ月先までのデータを取得
