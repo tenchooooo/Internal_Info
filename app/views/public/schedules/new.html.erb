@@ -13,12 +13,12 @@
         </ul>
       <% end %>
       <%= form_with model: @schedule, url: schedules_path, method: :post do |f| %>
-        <h6 class="mt-3">日付を選択</h6>
-        <%= f.date_field :day %> <br>
-
-        <div id="radioBtn">
+        <h5 class="mt-3">①日付を選択</h5>
+        <%= f.date_field :day ,class:"ml-3"%> <br>
+        <h5 class="mt-5">②予定を選択</h5>
+        <div id="radioBtn" class="ml-3">
           <%= f.radio_button :select_schedule, 1 %>
-          <%= f.label :schedule, "出欠勤情報", class: "mt-5"%> <br>
+          <%= f.label :schedule, "出欠勤情報", class: "mt-2"%> <br>
 
           <%= f.radio_button :select_schedule, 2 %>
           <%= f.label :schedule, "出張情報" %> <br>
@@ -38,7 +38,7 @@
               <%= f.radio_button :attendance, Schedule.attendances.key(2) %>
               <%= f.label :attendance, Schedule.attendances_i18n[:afternoon_off] %>
               <%= f.radio_button :attendance, Schedule.attendances.key(3) %>
-              <%= f.label :attendance, Schedule.attendances_i18n[:leaving_early] %> <br>              
+              <%= f.label :attendance, Schedule.attendances_i18n[:leaving_early] %> <br>
             </div>
 
           </div>
@@ -63,12 +63,13 @@
         </div>
         <div id="displayBox">
           <div class="cm_box">
+            <p>　　　予定を記述してください。</p>
             <%= f.text_field :other, class:"ml-5" %>
           </div>
         </div>
 
         <%= f.hidden_field :member_id, :value=> current_member.id %> <br>
-        <%= f.submit "保存", class:"btn btn-success mt-3" %>
+        <%= f.submit "③保存", class:"btn btn-success mt-3" %>
       <% end %>
     </div>
   </div>

@@ -16,6 +16,18 @@ $(function(){
 		$("#tripBox .box").eq(index).addClass('active');
 		$('#tripBox .active').show();
 	});
+	
+// 	違うラジオボタンを選択したときに前の設定を削除
+	$('#radioBtn input').change(function(){
+	  $('input[name="schedule[attendance]"]').removeAttr("checked").prop("checked", false).change();
+	  $('input[name="schedule[schedule]"]').removeAttr("checked").prop("checked", false).change();
+	  $('input[name="schedule[trip]"]').val('');
+	  $('input[name="schedule[go_out]"]').val('');
+	  $('input[name="schedule[other]"]').val('');
+	});
+	$('#radioBtn3 input').change(function(){
+	  $('input[name="schedule[trip]"]').val('');
+	  $('input[name="schedule[go_out]"]').val('');
+	});
 });
 
-// 内容書いた後のボタン変更時にテキストの中身をクリアしたいprop?
