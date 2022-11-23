@@ -3,7 +3,8 @@ class Schedule < ApplicationRecord
   enum attendance: { oneday_off: 0, morning_off: 1, afternoon_off: 2, leaving_early: 3 }
 
   validates :day, presence: true
-  validates_with ScheduleValidator
+  validates :attendance_to_other, presence: true
+
 
   def self.schedules_after_three_month
     # 今日から３カ月先までのデータを取得
@@ -17,5 +18,11 @@ class Schedule < ApplicationRecord
       schedule_data.push(schedule_hash)
     end
     schedule_data
+  end
+
+  private
+
+  def attendance_to_other
+    attendance.presence || trip.presence || go_out.presence || other.presence
   end
 end
