@@ -74,4 +74,3 @@ gem "net-pop"
 gem "net-imap"
 gem "whenever", require: false
 gem "kaminari"
-gem 'rmagick'

@@ -4,7 +4,7 @@
         <div class="row g-0">
           <div class="card-image col-md-4">
             <%= link_to post_path(post.id) do %>
-              <%= image_tag post.image, class: 'post-index-img' %>
+              <iframe src="<%= rails_blob_path(post.image, disposition: :inline) %>" height="200" width="300"></iframe>
             <% end %>
           </div>
           <div class="card-text col-md-8 m-auto">
