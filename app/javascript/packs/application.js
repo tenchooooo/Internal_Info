@@ -14,6 +14,7 @@ import "bootstrap";
 import "../stylesheets/application"
 import "../stylesheets/calendar"
 import "../stylesheets/schedule/new"
+import "../packs/schedule/new"
 
 Rails.start()
 Turbolinks.start()
