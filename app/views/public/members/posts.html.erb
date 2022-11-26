@@ -7,7 +7,11 @@
         <div class="row g-0">
           <div class="card-image col-md-4">
             <%= link_to post_path(post.id) do %>
-              <%= image_tag post.image, class: 'post-index-img' %>
+              <% if post.image.previewable? %>
+                <%= image_tag post.image.preview( resize_to_fit: [200, 200]) %>
+              <% else %>
+                <%= image_tag post.image, class: 'post-index-img' %>
+              <% end %>
             <% end %>
           </div>
           <div class="card-text col-md-8 m-auto">
@@ -25,4 +29,5 @@
       </div>
     <% end %>
   <% end %>
+  <%= paginate @posts %>
 </div>

@@ -6,7 +6,11 @@
   <div class="row m-auto">
 
     <div class="image-responsive">
-      <%= image_tag @post.image %>
+      <% if @post.image.previewable? %>
+        <%= image_tag @post.image.preview( resize_to_fit: [600, 600]) %>
+      <% else %>
+        <%= image_tag @post.image %>
+      <% end %>
       <p>閲覧期限：<%= @post.limit.to_s(:datetime_jp) %></p>
     </div>
     <div class="contents col-6">

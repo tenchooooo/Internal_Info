@@ -28,6 +28,7 @@ class Public::PostsController < ApplicationController
 
   def index
     @posts = Post.all.order(created_at: :desc).page(params[:page]).per(5)
+    # 投稿順、ページネート設定
     @posts.each do |post|
       if post.limit.to_s(:datetime_jp) < DateTime.now.to_s(:datetime_jp)
         post.update(browse_status:1)

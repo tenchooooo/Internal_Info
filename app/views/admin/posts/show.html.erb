@@ -5,7 +5,7 @@
 
   <div class="row">
     <div class="image-responsive">
-      <%= image_tag @post.image %>
+      <%= image_tag @post.image.preview( resize_to_fit: [600, 600]) %>
       <p>閲覧期限：<%= @post.limit.to_s(:datetime_jp) %></p>
     </div>
     <div class="contents col-6">

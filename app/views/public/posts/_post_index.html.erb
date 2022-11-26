@@ -4,7 +4,11 @@
         <div class="row g-0">
           <div class="card-image col-md-4">
             <%= link_to post_path(post.id) do %>
-              <iframe src="<%= rails_blob_path(post.image, disposition: :inline) %>" height="200" width="300"></iframe>
+              <% if post.image.previewable? %>
+                <%= image_tag post.image.preview( resize_to_fit: [200, 200]) %>
+              <% else %>
+                <%= image_tag post.image, class: 'post-index-img' %>
+              <% end %>
             <% end %>
           </div>
           <div class="card-text col-md-8 m-auto">
