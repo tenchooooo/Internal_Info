@@ -74,3 +74,4 @@ gem "net-pop"
 gem "net-imap"
 gem "whenever", require: false
 gem "kaminari"
+gem 'aws-sdk-s3'
