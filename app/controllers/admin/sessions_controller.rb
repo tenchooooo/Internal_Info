@@ -8,7 +8,7 @@ class Admin::SessionsController < Devise::SessionsController
   def new_guest
     member = Admin.guest
     sign_in member
-    redirect_to admin_members_path, notice: 'ゲストユーザーとしてログインしました。'
+    redirect_to admin_members_path, notice: '管理者画面にゲストログインしました。'
   end
   # GET /resource/sign_in
   # def new
